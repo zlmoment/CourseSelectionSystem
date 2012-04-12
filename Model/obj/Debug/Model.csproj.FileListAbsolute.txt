@@ -1,0 +1,5 @@
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\CourseSelectionSystem\Model\bin\Debug\Model.dll
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\CourseSelectionSystem\Model\bin\Debug\Model.pdb
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\CourseSelectionSystem\Model\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\CourseSelectionSystem\Model\obj\Debug\Model.dll
+C:\Users\Administrator\Documents\Visual Studio 2010\Projects\CourseSelectionSystem\Model\obj\Debug\Model.pdb
