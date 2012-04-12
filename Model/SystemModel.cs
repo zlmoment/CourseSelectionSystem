@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    class SystemModel
+    public class SystemModel
     {
         private int id;
         private string key;

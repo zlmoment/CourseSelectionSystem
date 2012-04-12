@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    class CollegeModel
+    public class CollegeModel
     {
         private int cid;
         private string cname;

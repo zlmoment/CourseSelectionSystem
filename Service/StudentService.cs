@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Model;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Service
 {
@@ -40,6 +41,26 @@ namespace Service
             {
                 conn.Close();
                 return 0;
+            }
+        }
+        public DataTable getAllStudent()
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_student` order by sid desc", conn);
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+                conn.Close();
+                return dt;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return null;
             }
         }
     }

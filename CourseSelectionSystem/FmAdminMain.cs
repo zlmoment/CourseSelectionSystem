@@ -113,8 +113,17 @@ namespace CourseSelectionSystem
         //修改公告
         private void button4_Click(object sender, EventArgs e)
         {
+            //bug:未选中之前点击会空指针
             FmNewsDetail fmNewsDetail = new FmNewsDetail("修改内容", newsModelList[this.checkedListBox1.SelectedIndex],true);
             fmNewsDetail.ShowDialog();
+        }
+        //刷新学生列表
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //这里还需要对列的显示进行自定义
+            StudentBusiness stuBusiness = new StudentBusiness();
+            DataTable dt = stuBusiness.getAllStudent();
+            this.dataGridView1.DataSource = dt;
         }
 
     }

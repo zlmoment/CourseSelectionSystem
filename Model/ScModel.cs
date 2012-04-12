@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    class ScModel
+    public class ScModel
     {
         private int id;
         private int sid;

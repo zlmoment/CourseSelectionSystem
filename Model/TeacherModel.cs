@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    class TeacherModel
+    public class TeacherModel
     {
         private int tid;
         private int uid;

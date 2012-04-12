@@ -44,6 +44,7 @@
     <Compile Include="AddStudentBusiness.cs" />
     <Compile Include="DeleteNewsBusiness.cs" />
     <Compile Include="GetAllNewsListBusiness.cs" />
+    <Compile Include="StudentBusiness.cs" />
     <Compile Include="UpdateNewsBusiness.cs" />
     <Compile Include="UserLoginBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

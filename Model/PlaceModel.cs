@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model
 {
-    class PlaceModel
+    public class PlaceModel
     {
         private int pid;
         private string pname;
