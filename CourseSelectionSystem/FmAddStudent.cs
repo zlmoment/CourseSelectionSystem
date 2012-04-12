@@ -37,7 +37,7 @@ namespace CourseSelectionSystem
                 collegeid = int.Parse(this.comboBox2.Text);
 
                 int sid = 0 ;
-                AddStudentBusiness addStudentBusiness = new AddStudentBusiness();
+                StudentBusiness addStudentBusiness = new StudentBusiness();
                 sid = addStudentBusiness.addstudent(stunum, sname, gender, startyear, collegeid);
                 MessageBox.Show(Convert.ToString(sid));
                 this.Hide();
