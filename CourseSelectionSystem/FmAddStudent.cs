@@ -25,7 +25,7 @@ namespace CourseSelectionSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.tb_sname.Text != "" && this.tb_stunum.Text != "" && (this.radioButton1.Checked || this.radioButton2.Checked) && this.comboBox1.Text != "请选择年份" && this.comboBox2.Text != "请选择学院")
+            if (this.tb_stunum.Text != "" && this.tb_sname.Text != "" && (this.radioButton1.Checked || this.radioButton2.Checked) && this.comboBox1.Text != "请选择年份" && this.comboBox2.Text != "请选择学院")
             {
                 stunum = this.tb_stunum.Text;
                 sname = this.tb_sname.Text;
@@ -40,7 +40,7 @@ namespace CourseSelectionSystem
                 StudentBusiness addStudentBusiness = new StudentBusiness();
                 sid = addStudentBusiness.addstudent(stunum, sname, gender, startyear, collegeid);
                 MessageBox.Show(Convert.ToString(sid));
-                this.Hide();
+                this.Dispose();
             }
             else
             {

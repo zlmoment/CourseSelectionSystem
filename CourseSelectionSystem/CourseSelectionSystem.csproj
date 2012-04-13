@@ -13,6 +13,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -109,6 +109,12 @@
     <Compile Include="FmAdminMain.Designer.cs">
       <DependentUpon>FmAdminMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FmAddTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FmAddTeacher.Designer.cs">
+      <DependentUpon>FmAddTeacher.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FmAddNews.resx">
       <DependentUpon>FmAddNews.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FmAdminMain.resx">
       <DependentUpon>FmAdminMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FmAddTeacher.resx">
+      <DependentUpon>FmAddTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

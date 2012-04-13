@@ -47,6 +47,7 @@
     <Compile Include="GetConn.cs" />
     <Compile Include="NewsService.cs" />
     <Compile Include="StudentService.cs" />
+    <Compile Include="TeacherService.cs" />
     <Compile Include="UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

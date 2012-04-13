@@ -162,6 +162,20 @@ namespace CourseSelectionSystem
                 }
             }
         }
+        //刷新教师列表
+        private void button13_Click(object sender, EventArgs e)
+        {
+            //这里还需要对列的显示进行自定义
+            TeacherBusiness teaBusiness = new TeacherBusiness();
+            DataTable dt = teaBusiness.getAllTeacher();
+            this.dataGridView2.DataSource = dt;
+        }
+        //新增教师
+        private void button10_Click(object sender, EventArgs e)
+        {
+            FmAddTeacher fmAddTeacher = new FmAddTeacher();
+            fmAddTeacher.ShowDialog();
+        }
 
     }
 }

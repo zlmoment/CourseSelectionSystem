@@ -55,18 +55,27 @@
             this.tb_renewpasswd = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
@@ -95,7 +104,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(687, 393);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "课程与教师管理";
+            this.tabPage2.Text = "课程管理";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
@@ -340,6 +349,67 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.button13);
+            this.tabPage6.Controls.Add(this.button12);
+            this.tabPage6.Controls.Add(this.button11);
+            this.tabPage6.Controls.Add(this.button10);
+            this.tabPage6.Controls.Add(this.dataGridView2);
+            this.tabPage6.Location = new System.Drawing.Point(4, 34);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(687, 393);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "教师管理";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.Size = new System.Drawing.Size(660, 333);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(11, 356);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(100, 29);
+            this.button10.TabIndex = 1;
+            this.button10.Text = "新增教师";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(117, 356);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(100, 29);
+            this.button11.TabIndex = 2;
+            this.button11.Text = "删除所选";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(223, 356);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(100, 29);
+            this.button12.TabIndex = 3;
+            this.button12.Text = "修改所选";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(572, 356);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(100, 29);
+            this.button13.TabIndex = 4;
+            this.button13.Text = "刷新列表";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
             // FmAdminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -361,6 +431,8 @@
             this.tabPage5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -394,5 +466,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tb_originPasswd;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
     }
 }

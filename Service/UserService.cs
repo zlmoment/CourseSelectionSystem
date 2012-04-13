@@ -25,17 +25,8 @@ namespace Service
                 cmd.Parameters.AddWithValue("@type", type);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
-                //返回主键值uid
-                cmd = new MySqlCommand("select * from `tb_user` where `username`=@username", conn);
-                cmd.Parameters.AddWithValue("@username", username);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                int uid = 0;
-                if (reader.Read())
-                {
-                    uid = int.Parse(reader["uid"].ToString());
-                }
-                conn.Close();
-                return uid;
+                
+                return this.getUidByUsername(username);
             }
             catch (Exception)
             {

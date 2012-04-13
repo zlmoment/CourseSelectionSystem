@@ -19,3 +19,4 @@ C:\Users\Administrator\Documents\Visual Studio 2010\Projects\CourseSelectionSyst
 C:\Users\Administrator\Documents\Visual Studio 2010\Projects\CourseSelectionSystem\CourseSelectionSystem\obj\x86\Debug\CourseSelectionSystem.FmAddStudent.resources
 C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\CourseSelectionSystem\obj\x86\Debug\CourseSelectionSystem.FmAddNews.resources
 C:\Users\Administrator\Documents\Visual Studio 2010\Projects\CourseSelectionSystem\CourseSelectionSystem\obj\x86\Debug\CourseSelectionSystem.FmNewsDetail.resources
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\CourseSelectionSystem\obj\x86\Debug\CourseSelectionSystem.FmAddTeacher.resources

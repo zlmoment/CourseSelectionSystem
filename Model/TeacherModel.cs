@@ -11,10 +11,10 @@ namespace Model
         private int uid;
         private string tname;
         private int gender;
-        private DateTime birthday;
+        private string birthday;
         private string phone;
 
-        public TeacherModel(int tid, int uid, string tname, int gender, DateTime birthday, string phone)
+        public TeacherModel(int tid, int uid, string tname, int gender, string birthday, string phone)
         {
             this.tid = tid;
             this.uid = uid;
@@ -34,9 +34,9 @@ namespace Model
             get { return phone; }
             set { phone = value; }
         }
-        
 
-        public DateTime Birthday
+
+        public string Birthday
         {
             get { return birthday; }
             set { birthday = value; }
