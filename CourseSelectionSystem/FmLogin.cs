@@ -10,7 +10,6 @@ using SkinSharp;
 using Business;
 using Model;
 
-
 namespace CourseSelectionSystem
 {
     public partial class FmLogin : Form
@@ -40,8 +39,8 @@ namespace CourseSelectionSystem
                 this.textBox1.Enabled = false;
                 this.textBox2.Enabled = false;
 
-                UserLoginBusiness userLoginBusiness = new UserLoginBusiness();
-                type = userLoginBusiness.CheckPasswd(username, password);
+                UserBusiness userBusiness = new UserBusiness();
+                type = userBusiness.CheckPasswd(username, password);
                 UserModel userModel = new UserModel();
                 userModel.Username = username;
                 userModel.Password = password;
@@ -62,7 +61,8 @@ namespace CourseSelectionSystem
                 //3:管理员
                 else if (type == 3)
                 {
-                    FmAdminMain fmAdminMain = new FmAdminMain(this);
+                    userModel.Uid = userBusiness.getUidByUsername(username);
+                    FmAdminMain fmAdminMain = new FmAdminMain(this, userModel);
                     fmAdminMain.Show();
                 }
                 //0:登陆失败

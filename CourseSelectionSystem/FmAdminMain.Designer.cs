@@ -41,16 +41,26 @@
             this.button2 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_originPasswd = new System.Windows.Forms.TextBox();
+            this.tb_newpasswd = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tb_renewpasswd = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -187,6 +197,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button8);
+            this.tabPage4.Controls.Add(this.button7);
             this.tabPage4.Controls.Add(this.button6);
             this.tabPage4.Controls.Add(this.dataGridView1);
             this.tabPage4.Controls.Add(this.button1);
@@ -196,6 +208,25 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "学生管理";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(574, 356);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 29);
+            this.button6.TabIndex = 2;
+            this.button6.Text = "刷新列表";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(660, 333);
+            this.dataGridView1.TabIndex = 1;
             // 
             // button1
             // 
@@ -217,33 +248,97 @@
             this.tabPage5.Text = "其它";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(117, 356);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(100, 29);
+            this.button7.TabIndex = 3;
+            this.button7.Text = "删除所选";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(223, 356);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(100, 29);
+            this.button8.TabIndex = 4;
+            this.button8.Text = "修改选中";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(22, 19);
+            this.groupBox1.Controls.Add(this.button9);
+            this.groupBox1.Controls.Add(this.tb_renewpasswd);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.tb_newpasswd);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.tb_originPasswd);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Location = new System.Drawing.Point(49, 58);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(216, 357);
+            this.groupBox1.Size = new System.Drawing.Size(276, 273);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "修改密码";
             // 
-            // dataGridView1
+            // label4
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(660, 333);
-            this.dataGridView1.TabIndex = 1;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(37, 42);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "原密码";
             // 
-            // button6
+            // tb_originPasswd
             // 
-            this.button6.Location = new System.Drawing.Point(574, 356);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 29);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "刷新列表";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.tb_originPasswd.Location = new System.Drawing.Point(84, 39);
+            this.tb_originPasswd.Name = "tb_originPasswd";
+            this.tb_originPasswd.Size = new System.Drawing.Size(143, 21);
+            this.tb_originPasswd.TabIndex = 1;
+            // 
+            // tb_newpasswd
+            // 
+            this.tb_newpasswd.Location = new System.Drawing.Point(84, 77);
+            this.tb_newpasswd.Name = "tb_newpasswd";
+            this.tb_newpasswd.Size = new System.Drawing.Size(143, 21);
+            this.tb_newpasswd.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(37, 80);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "新密码";
+            // 
+            // tb_renewpasswd
+            // 
+            this.tb_renewpasswd.Location = new System.Drawing.Point(84, 115);
+            this.tb_renewpasswd.Name = "tb_renewpasswd";
+            this.tb_renewpasswd.Size = new System.Drawing.Size(143, 21);
+            this.tb_renewpasswd.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 118);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "再次输入";
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(89, 177);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(100, 31);
+            this.button9.TabIndex = 6;
+            this.button9.Text = "确认修改";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // FmAdminMain
             // 
@@ -262,8 +357,10 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -285,8 +382,17 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tb_renewpasswd;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tb_newpasswd;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tb_originPasswd;
+        private System.Windows.Forms.Button button9;
     }
 }

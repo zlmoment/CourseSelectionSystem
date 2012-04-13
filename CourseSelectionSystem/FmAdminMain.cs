@@ -14,12 +14,14 @@ namespace CourseSelectionSystem
     public partial class FmAdminMain : Form
     {
         FmLogin fmLogin;
+        UserModel userModel;
         NewsModel[] newsModelList = null;
-        public FmAdminMain(FmLogin fmLogin)
+        public FmAdminMain(FmLogin fmLogin, UserModel userModel)
         {
             this.fmLogin = fmLogin;
             InitializeComponent();
             this.fmLogin.Hide();
+            this.userModel = userModel;
         }
         private void FmAdminMain_Load(object sender, EventArgs e)
         {
@@ -124,6 +126,41 @@ namespace CourseSelectionSystem
             StudentBusiness stuBusiness = new StudentBusiness();
             DataTable dt = stuBusiness.getAllStudent();
             this.dataGridView1.DataSource = dt;
+        }
+        //修改密码
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (this.tb_originPasswd.Text == "" || this.tb_newpasswd.Text == "" || this.tb_renewpasswd.Text == "")
+            {
+                MessageBox.Show("请输入所有内容。");
+            } 
+            else
+            {
+                if (this.tb_originPasswd.Text == this.userModel.Password)
+                {
+                    if (this.tb_newpasswd.Text == this.tb_renewpasswd.Text)
+                    {
+                        UserBusiness userBusiness = new UserBusiness();
+                        if (userBusiness.changePasswd(userModel.Username, this.tb_newpasswd.Text))
+                        {
+                            MessageBox.Show("修改成功");
+                        }
+                        else
+                        {
+                            MessageBox.Show("修改失败");
+                        }
+                    } 
+                    else
+                    {
+                        MessageBox.Show("两次输入的密码不一致");
+                    }
+                    
+                } 
+                else
+                {
+                    MessageBox.Show("原密码不正确。");
+                }
+            }
         }
 
     }

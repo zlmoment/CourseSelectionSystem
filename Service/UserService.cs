@@ -75,6 +75,30 @@ namespace Service
             }
 
         }
+        public int getUidByUsername(string username)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd;
+                cmd = new MySqlCommand("select * from `tb_user` where `username`=@username", conn);
+                cmd.Parameters.AddWithValue("@username", username);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                int uid = 0;
+                if (reader.Read())
+                {
+                    uid = int.Parse(reader["uid"].ToString());
+                }
+                conn.Close();
+                return uid;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
         public bool UpdatePasswd(string username, string password)
         {
             MySqlConnection conn = GetConn.getConn();
