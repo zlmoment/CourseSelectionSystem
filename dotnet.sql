@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2012 年 04 月 12 日 14:30
+-- 生成日期: 2012 年 04 月 13 日 09:43
 -- 服务器版本: 5.5.20
 -- PHP 版本: 5.3.10
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `tb_news` (
   `pubtime` varchar(20) NOT NULL DEFAULT '',
   `content` longtext NOT NULL,
   PRIMARY KEY (`nid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- 转存表中的数据 `tb_news`
@@ -84,6 +84,7 @@ INSERT INTO `tb_news` (`nid`, `title`, `pubtime`, `content`) VALUES
 (2, '2', '2012/4/10 20:17:48', '2'),
 (3, '3', '2012/4/10 20:17:53', '3'),
 (12, '1', '2012/4/12 1:50:05', '1'),
+(18, '234234', '2012/4/12 22:44:19', '23423423'),
 (9, '123123213', '2012/4/12 1:30:49', '111'),
 (17, 'zz', '2012/4/12 18:00:01', '哈哈哈哈哈哈');
 
@@ -131,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `tb_student` (
   `startyear` varchar(4) NOT NULL DEFAULT '',
   `collegeid` int(11) NOT NULL,
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `tb_student`
@@ -139,7 +140,9 @@ CREATE TABLE IF NOT EXISTS `tb_student` (
 
 INSERT INTO `tb_student` (`sid`, `uid`, `stunum`, `sname`, `gender`, `startyear`, `collegeid`) VALUES
 (1, 2, '09301104', '李昭谕', 1, '2009', 1),
-(2, 3, '09301097', '黄晓雯', 2, '2009', 1);
+(2, 3, '09301097', '黄晓雯', 2, '2009', 1),
+(3, 4, '09301111', '11111', 1, '2009', 1),
+(4, 4, '09301111', '1324', 1, '2009', 1);
 
 -- --------------------------------------------------------
 
@@ -167,10 +170,17 @@ CREATE TABLE IF NOT EXISTS `tb_teacher` (
   `uid` int(11) NOT NULL,
   `tname` varchar(20) NOT NULL DEFAULT '',
   `gender` tinyint(1) NOT NULL,
-  `birthday` datetime NOT NULL,
+  `birthday` varchar(20) NOT NULL,
   `phone` varchar(15) DEFAULT '',
   PRIMARY KEY (`tid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `tb_teacher`
+--
+
+INSERT INTO `tb_teacher` (`tid`, `uid`, `tname`, `gender`, `birthday`, `phone`) VALUES
+(1, 6, '冯凤娟', 2, '2012年4月13日', '15210581111');
 
 -- --------------------------------------------------------
 
@@ -185,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
   `password` varchar(20) NOT NULL DEFAULT '',
   `type` int(1) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- 转存表中的数据 `tb_user`
@@ -194,7 +204,10 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
 INSERT INTO `tb_user` (`uid`, `username`, `password`, `type`) VALUES
 (1, 'admin', 'nimda', 3),
 (2, '09301104', '123456', 1),
-(3, '09301097', '123456', 1);
+(3, '09301097', '123456', 1),
+(4, '09301111', '123456', 1),
+(5, '09301111', '123456', 1),
+(6, '冯凤娟', '123456', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
