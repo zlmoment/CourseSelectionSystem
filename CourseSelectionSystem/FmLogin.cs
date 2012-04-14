@@ -48,14 +48,15 @@ namespace CourseSelectionSystem
                 //1:学生
                 if (type == 1)
                 {
-                    //增加一个userModel.Uid =userLoginBusiness.getUid(username);
-                    FmStudentMain fmStudentMain = new FmStudentMain(this);
+                    userModel.Uid = userBusiness.getUidByUsername(username);
+                    FmStudentMain fmStudentMain = new FmStudentMain(this, userModel);
                     fmStudentMain.Show();
                 }
                 //2:老师
                 else if (type == 2)
                 {
-                    FmTeacherMain fmTeacherMain = new FmTeacherMain(this);
+                    userModel.Uid = userBusiness.getUidByUsername(username);
+                    FmTeacherMain fmTeacherMain = new FmTeacherMain(this, userModel);
                     fmTeacherMain.Show();
                 }
                 //3:管理员
