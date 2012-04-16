@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2012 年 04 月 13 日 09:43
+-- 生成日期: 2012 年 04 月 16 日 10:44
 -- 服务器版本: 5.5.20
 -- PHP 版本: 5.3.10
 
@@ -128,21 +128,22 @@ CREATE TABLE IF NOT EXISTS `tb_student` (
   `uid` int(11) NOT NULL,
   `stunum` varchar(10) NOT NULL DEFAULT '',
   `sname` varchar(20) NOT NULL DEFAULT '',
-  `gender` tinyint(1) NOT NULL,
+  `gender` int(1) NOT NULL,
   `startyear` varchar(4) NOT NULL DEFAULT '',
   `collegeid` int(11) NOT NULL,
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- 转存表中的数据 `tb_student`
 --
 
 INSERT INTO `tb_student` (`sid`, `uid`, `stunum`, `sname`, `gender`, `startyear`, `collegeid`) VALUES
-(1, 2, '09301104', '李昭谕', 1, '2009', 1),
-(2, 3, '09301097', '黄晓雯', 2, '2009', 1),
-(3, 4, '09301111', '11111', 1, '2009', 1),
-(4, 4, '09301111', '1324', 1, '2009', 1);
+(1, 2, '09301104', '李昭谕', 1, '2000', 1),
+(2, 3, '09301097', '黄晓雯', 0, '2009', 1),
+(3, 4, '09301311', '1111133', 0, '2009', 1),
+(4, 4, '09301110', '13243', 0, '2012', 2),
+(5, 7, '09301022', '施凯伦', 0, '2009', 1);
 
 -- --------------------------------------------------------
 
@@ -195,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
   `password` varchar(20) NOT NULL DEFAULT '',
   `type` int(1) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `tb_user`
@@ -207,7 +208,8 @@ INSERT INTO `tb_user` (`uid`, `username`, `password`, `type`) VALUES
 (3, '09301097', '123456', 1),
 (4, '09301111', '123456', 1),
 (5, '09301111', '123456', 1),
-(6, '冯凤娟', '123456', 2);
+(6, '冯凤娟', '123456', 2),
+(7, '09301021', '123456', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
