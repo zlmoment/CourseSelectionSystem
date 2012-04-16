@@ -30,5 +30,13 @@ namespace Business
             }
             return sid;
         }
+        public int updatestudent(StudentModel stuModel)
+        {
+            return new StudentService().update(stuModel);
+        }
+        public StudentModel getStuBySid(int sid)
+        {
+            return new StudentService().getStuBySid(sid);
+        }
     }
 }

@@ -63,5 +63,58 @@ namespace Service
                 return null;
             }
         }
+        public int update(StudentModel stuModel)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("update `tb_student` set `stunum`=@stunum, `sname`=@sname, `gender`=@gender, `startyear`=@startyear, `collegeid`=@collegeid where `sid`=@sid", conn);
+                cmd.Parameters.AddWithValue("@stunum", stuModel.Stunum);
+                cmd.Parameters.AddWithValue("@sname", stuModel.Sname);
+                cmd.Parameters.AddWithValue("@gender", stuModel.Gender);
+                cmd.Parameters.AddWithValue("@startyear", stuModel.Startyear);
+                cmd.Parameters.AddWithValue("@collegeid", stuModel.Collegeid);
+                cmd.Parameters.AddWithValue("@sid", stuModel.Sid);
+                //string cmdstring = 
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
+        public StudentModel getStuBySid(int sid)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            StudentModel stuModel = new StudentModel();
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_student` where `sid`=@sid", conn);
+                cmd.Parameters.AddWithValue("@sid", sid);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    stuModel.Sid = int.Parse(reader["sid"].ToString());
+                    stuModel.Uid = int.Parse(reader["uid"].ToString());
+                    stuModel.Sname = (string)reader["sname"];
+                    stuModel.Stunum = (string)reader["stunum"];
+                    stuModel.Startyear = (string)reader["startyear"];
+                    stuModel.Collegeid = int.Parse(reader["collegeid"].ToString());
+                }
+                conn.Close();
+                return stuModel;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return null;
+            }
+        }
     }
 }

@@ -124,7 +124,10 @@ namespace CourseSelectionSystem
         {
             //这里还需要对列的显示进行自定义
             StudentBusiness stuBusiness = new StudentBusiness();
+            
             DataTable dt = stuBusiness.getAllStudent();
+            
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = dt;
         }
         //修改密码
@@ -175,6 +178,39 @@ namespace CourseSelectionSystem
         {
             FmAddTeacher fmAddTeacher = new FmAddTeacher();
             fmAddTeacher.ShowDialog();
+        }
+        //修改选中学生
+        private void button8_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            StudentModel stuModelToBeUpdated = new StudentModel();
+            StudentBusiness stuBusiness = new StudentBusiness();
+            //int sid = int.Parse(this.dataGridView1.CurrentRow.Cells["sid"].Value.ToString());
+            stuModelToBeUpdated.Sid = int.Parse(this.dataGridView1.CurrentRow.Cells["sid"].Value.ToString());
+            stuModelToBeUpdated.Stunum = this.dataGridView1.CurrentRow.Cells["stunum"].Value.ToString();
+            stuModelToBeUpdated.Sname = this.dataGridView1.CurrentRow.Cells["sname"].Value.ToString();
+            stuModelToBeUpdated.Startyear = this.dataGridView1.CurrentRow.Cells["startyear"].Value.ToString();
+            stuModelToBeUpdated.Gender = int.Parse(this.dataGridView1.CurrentRow.Cells["gender"].Value.ToString());
+            stuModelToBeUpdated.Collegeid = int.Parse(this.dataGridView1.CurrentRow.Cells["collegeid"].Value.ToString());
+            //stuModelToBeUpdated = stuBusiness.getStuBySid(sid);
+            int result = stuBusiness.updatestudent(stuModelToBeUpdated);
+            if (result != 0)
+            {
+                MessageBox.Show("更新成功");
+            } 
+            else
+            {
+                MessageBox.Show("更新失败");
+            }
+            
+        }
+        //学生datagridview数据绑定完毕后 转换数据
+        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            
         }
 
     }
