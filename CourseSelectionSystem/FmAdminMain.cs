@@ -312,12 +312,60 @@ namespace CourseSelectionSystem
         //修改选中课程
         private void button16_Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show("请直接双击单元格进行修改，修改完后回车即可！");
         }
         //删除选中课程
         private void button15_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("确定要删除吗？", "询问", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                bool isDeleteOk = true;
+                CourseBusiness couBusiness = new CourseBusiness();
+                DataGridViewSelectedRowCollection toBeDeletedRowsCollection = this.dataGridView3.SelectedRows;
 
+                DataGridViewRow[] tobedeletedrows = new DataGridViewRow[toBeDeletedRowsCollection.Count];
+                toBeDeletedRowsCollection.CopyTo(tobedeletedrows, 0);
+                foreach (DataGridViewRow temp in tobedeletedrows)
+                {
+                    if (couBusiness.deleteCourse(int.Parse(temp.Cells["cid"].Value.ToString())) == 0)
+                        isDeleteOk = false;
+                }
+                if (isDeleteOk)
+                {
+                    MessageBox.Show("删除成功！");
+                }
+                else
+                {
+                    MessageBox.Show("删除出现错误，请刷新列表后重试！");
+                }
+
+            }
+        }
+        //课程列表更新 编辑后保存
+        private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            //待验证 
+            CourseModel couModelToBeUpdated = new CourseModel();
+            CourseBusiness couBusiness = new CourseBusiness();
+            
+            couModelToBeUpdated.Cid = int.Parse(this.dataGridView3.CurrentRow.Cells["cid"].Value.ToString());
+            couModelToBeUpdated.Cname = this.dataGridView3.CurrentRow.Cells["cname"].Value.ToString();
+            couModelToBeUpdated.Credit = int.Parse(this.dataGridView3.CurrentRow.Cells["credit"].Value.ToString());
+            couModelToBeUpdated.Pid = int.Parse(this.dataGridView3.CurrentRow.Cells["pid"].Value.ToString());
+            couModelToBeUpdated.Tid = int.Parse(this.dataGridView3.CurrentRow.Cells["ctid"].Value.ToString());
+            couModelToBeUpdated.Section = int.Parse(this.dataGridView3.CurrentRow.Cells["section"].Value.ToString());
+            couModelToBeUpdated.Week = int.Parse(this.dataGridView3.CurrentRow.Cells["week"].Value.ToString());
+            couModelToBeUpdated.Precourse = int.Parse(this.dataGridView3.CurrentRow.Cells["precourse"].Value.ToString());
+            //stuModelToBeUpdated = stuBusiness.getStuBySid(sid);
+            int result = couBusiness.updatecourse(couModelToBeUpdated);
+            if (result != 0)
+            {
+                MessageBox.Show("更新成功");
+            }
+            else
+            {
+                MessageBox.Show("更新失败");
+            }
         }
         
         

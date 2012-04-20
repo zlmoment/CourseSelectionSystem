@@ -58,6 +58,49 @@ namespace Service
                 return null;
             }
         }
+        public int delete(int cid)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("delete from `tb_course` where `cid`=@cid", conn);
+                cmd.Parameters.AddWithValue("@cid", cid);
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
+        public int update(CourseModel couModel)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("update `tb_course` set `cname`=@cname, `credit`=@credit, `week`=@week, `section`=@section, `tid`=@tid, `pid`=@pid, `precourse`=@precourse where `cid`=@cid", conn);
+                cmd.Parameters.AddWithValue("@cname", couModel.Cname);
+                cmd.Parameters.AddWithValue("@credit", couModel.Credit);
+                cmd.Parameters.AddWithValue("@week", couModel.Week);
+                cmd.Parameters.AddWithValue("@section", couModel.Section);
+                cmd.Parameters.AddWithValue("@tid", couModel.Tid);
+                cmd.Parameters.AddWithValue("@pid", couModel.Pid);
+                cmd.Parameters.AddWithValue("@precourse", couModel.Precourse);
+                cmd.Parameters.AddWithValue("@cid", couModel.Cid);
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
         public List<CourseModel> getAllCourseBySid(int sid,int semester)
         {
             MySqlConnection conn = GetConn.getConn();

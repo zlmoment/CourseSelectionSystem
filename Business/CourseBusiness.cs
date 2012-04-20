@@ -22,5 +22,13 @@ namespace Business
             CourseService couService = new CourseService();
             return couService.getAllCourse();
         }
+        public int deleteCourse(int cid)
+        {
+            return new CourseService().delete(cid);
+        }
+        public int updatecourse(CourseModel couModel)
+        {
+            return new CourseService().update(couModel);
+        }
     }
 }
