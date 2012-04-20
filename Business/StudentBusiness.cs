@@ -13,10 +13,25 @@ namespace Business
         public StudentBusiness()
         {
         }
+        //在getAllStudent()里把datatable遍历，增加新的一列
         public DataTable getAllStudent()
         {
             StudentService stuService = new StudentService();
-            return stuService.getAllStudent();
+            DataTable dt = stuService.getAllStudent();
+            dt.Columns.Add("trans_gender",typeof(string));
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["gender"].ToString() == "0")
+                {
+                    dr["trans_gender"] = "女";
+                } 
+                else
+                {
+                    dr["trans_gender"] = "男";
+                }
+                
+            }
+            return dt;
         }
         public int addstudent(string stunum, string sname, int gender, string startyear, int collegeid)
         {

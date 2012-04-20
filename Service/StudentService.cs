@@ -50,7 +50,7 @@ namespace Service
             {
                 conn.Open();
                 
-                MySqlCommand cmd = new MySqlCommand("select * from `tb_student` order by sid desc", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_student` order by sid", conn);
                 DataTable dt = new DataTable();
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(dt);

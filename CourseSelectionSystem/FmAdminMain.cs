@@ -122,7 +122,6 @@ namespace CourseSelectionSystem
         //刷新学生列表
         private void button6_Click(object sender, EventArgs e)
         {
-            
             StudentBusiness stuBusiness = new StudentBusiness();
             
             DataTable dt = stuBusiness.getAllStudent();
@@ -199,7 +198,7 @@ namespace CourseSelectionSystem
             stuModelToBeUpdated.Stunum = this.dataGridView1.CurrentRow.Cells["stunum"].Value.ToString();
             stuModelToBeUpdated.Sname = this.dataGridView1.CurrentRow.Cells["sname"].Value.ToString();
             stuModelToBeUpdated.Startyear = this.dataGridView1.CurrentRow.Cells["startyear"].Value.ToString();
-            stuModelToBeUpdated.Gender = int.Parse(this.dataGridView1.CurrentRow.Cells["gender"].Value.ToString());
+            stuModelToBeUpdated.Gender = this.dataGridView1.CurrentRow.Cells["gender"].Value.ToString() == "男" ? 1 : 0;
             stuModelToBeUpdated.Collegeid = int.Parse(this.dataGridView1.CurrentRow.Cells["collegeid"].Value.ToString());
             //stuModelToBeUpdated = stuBusiness.getStuBySid(sid);
             int result = stuBusiness.updatestudent(stuModelToBeUpdated);
@@ -281,7 +280,7 @@ namespace CourseSelectionSystem
 
             teaModelToBeUpdated.Tname = this.dataGridView2.CurrentRow.Cells["tname"].Value.ToString();
             teaModelToBeUpdated.Birthday = this.dataGridView2.CurrentRow.Cells["birthday"].Value.ToString();
-            teaModelToBeUpdated.Gender = int.Parse(this.dataGridView2.CurrentRow.Cells["tgender"].Value.ToString());
+            teaModelToBeUpdated.Gender = this.dataGridView2.CurrentRow.Cells["tgender"].Value.ToString()=="男"?1:0;
             teaModelToBeUpdated.Phone = this.dataGridView2.CurrentRow.Cells["phone"].Value.ToString();
             
             int result = teaBusiness.updateteacher(teaModelToBeUpdated);
@@ -343,7 +342,7 @@ namespace CourseSelectionSystem
         //课程列表更新 编辑后保存
         private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            //待验证 
+            
             CourseModel couModelToBeUpdated = new CourseModel();
             CourseBusiness couBusiness = new CourseBusiness();
             
@@ -353,9 +352,21 @@ namespace CourseSelectionSystem
             couModelToBeUpdated.Pid = int.Parse(this.dataGridView3.CurrentRow.Cells["pid"].Value.ToString());
             couModelToBeUpdated.Tid = int.Parse(this.dataGridView3.CurrentRow.Cells["ctid"].Value.ToString());
             couModelToBeUpdated.Section = int.Parse(this.dataGridView3.CurrentRow.Cells["section"].Value.ToString());
-            couModelToBeUpdated.Week = int.Parse(this.dataGridView3.CurrentRow.Cells["week"].Value.ToString());
+            if (this.dataGridView3.CurrentRow.Cells["week"].Value.ToString() == "1-16")
+            {
+                couModelToBeUpdated.Week = 1;
+            }
+            else if (this.dataGridView3.CurrentRow.Cells["week"].Value.ToString() == "1-8")
+            {
+                couModelToBeUpdated.Week = 2;
+            }
+            else
+            {
+                couModelToBeUpdated.Week = 3;
+            }
+            
             couModelToBeUpdated.Precourse = int.Parse(this.dataGridView3.CurrentRow.Cells["precourse"].Value.ToString());
-            //stuModelToBeUpdated = stuBusiness.getStuBySid(sid);
+            couModelToBeUpdated.Maxstu = int.Parse(this.dataGridView3.CurrentRow.Cells["maxstu"].Value.ToString());
             int result = couBusiness.updatecourse(couModelToBeUpdated);
             if (result != 0)
             {

@@ -15,8 +15,9 @@ namespace Model
         private int tid;
         private int pid;
         private int precourse;
+        private int maxstu;
 
-        public CourseModel(int cid, string cname, int credit, int week, int section, int tid, int pid, int precourse)
+        public CourseModel(int cid, string cname, int credit, int week, int section, int tid, int pid, int precourse, int maxstu)
         {
             this.cid = cid;
             this.cname = cname;
@@ -26,6 +27,7 @@ namespace Model
             this.tid = tid;
             this.pid = pid;
             this.precourse = precourse;
+            this.maxstu = maxstu;
         }
 
         public CourseModel()
@@ -87,6 +89,11 @@ namespace Model
             get { return cid; }
             set { cid = value; }
         }
-        
+
+        public int Maxstu
+        {
+            get { return maxstu; }
+            set { maxstu = value; }
+        }
     }
 }

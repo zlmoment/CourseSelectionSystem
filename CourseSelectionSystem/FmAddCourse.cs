@@ -21,10 +21,18 @@ namespace CourseSelectionSystem
         private int tid;
         private int pid;
         private int precourse;
+        private int maxstu;
 
         public FmAddCourse()
         {
             InitializeComponent();
+        }
+        public FmAddCourse(int tid)
+        {
+            InitializeComponent();
+            this.tid = tid;
+            this.cb_tid.Text = tid.ToString();
+            this.cb_tid.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -42,6 +50,7 @@ namespace CourseSelectionSystem
                 section = this.cb_section.SelectedIndex+1;
                 tid = int.Parse(this.cb_tid.Text);
                 pid = int.Parse(this.cb_pid.Text);
+                maxstu = int.Parse(this.tb_maxstu.Text);
                 if (this.tb_precourse.Text != "")
                 {
                     precourse = int.Parse(this.tb_precourse.Text);
@@ -53,7 +62,7 @@ namespace CourseSelectionSystem
 
                 int cid = 0;
                 CourseBusiness couBusiness = new CourseBusiness();
-                CourseModel courseModel = new CourseModel(cid,cname,credit,week,section,tid,pid,precourse);
+                CourseModel courseModel = new CourseModel(cid,cname,credit,week,section,tid,pid,precourse,maxstu);
                 cid = couBusiness.addCourse(courseModel);
                 MessageBox.Show(Convert.ToString(cid));
                 this.Dispose();

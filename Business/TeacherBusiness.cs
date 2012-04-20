@@ -39,7 +39,25 @@ namespace Business
         public DataTable getAllTeacher()
         {
             TeacherService teaService = new TeacherService();
-            return teaService.getAllTeacher();
+            DataTable dt = teaService.getAllTeacher();
+            dt.Columns.Add("trans_gender", typeof(string));
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["gender"].ToString() == "0")
+                {
+                    dr["trans_gender"] = "女";
+                }
+                else
+                {
+                    dr["trans_gender"] = "男";
+                }
+
+            }
+            return dt;
+        }
+        public int getTidByUid(int tid)
+        {
+            return new TeacherService().getTidByUid(tid);
         }
     }
 }
