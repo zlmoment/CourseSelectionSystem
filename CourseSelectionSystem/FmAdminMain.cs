@@ -126,7 +126,6 @@ namespace CourseSelectionSystem
             StudentBusiness stuBusiness = new StudentBusiness();
             
             DataTable dt = stuBusiness.getAllStudent();
-            MessageBox.Show(dt.ToString());
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = dt;
         }

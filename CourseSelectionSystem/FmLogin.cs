@@ -21,17 +21,7 @@ namespace CourseSelectionSystem
             skinh.Attach();
             InitializeComponent();
         }
-        public void notify()
-        {
-            this.button1.Text = "登陆";
-            this.button1.Enabled = true;
-            this.textBox1.Text = "";
-            this.textBox1.Enabled = true;
-            
-            this.textBox2.Text = "";
-            this.textBox2.Enabled = true;
-            this.textBox1.Focus();
-        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             string username = this.textBox1.Text;
