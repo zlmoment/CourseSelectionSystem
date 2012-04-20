@@ -1,0 +1,9 @@
+*.dll
+*.exe
+*.pdb
+bin
+obj
+*.suo
+*.user
+*.pidb
+*.nupkg
