@@ -106,6 +106,7 @@
             this.Name = "FmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "开心选课系统 - 登陆";
+            this.Activated += new System.EventHandler(this.FmLogin_Activated);
             this.ResumeLayout(false);
             this.PerformLayout();
 
