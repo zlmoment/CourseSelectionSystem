@@ -1,0 +1,7 @@
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Service\bin\Debug\Service.dll
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Service\bin\Debug\Service.pdb
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Service\bin\Debug\Model.dll
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Service\bin\Debug\Model.pdb
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Service\obj\Debug\ResolveAssemblyReference.cache
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Service\obj\Debug\Service.dll
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Service\obj\Debug\Service.pdb

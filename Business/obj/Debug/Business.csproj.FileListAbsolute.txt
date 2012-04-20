@@ -1,0 +1,9 @@
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Business\bin\Debug\Business.dll
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Business\bin\Debug\Business.pdb
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Business\bin\Debug\Model.dll
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Business\bin\Debug\Service.dll
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Business\bin\Debug\Model.pdb
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Business\bin\Debug\Service.pdb
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Business\obj\Debug\ResolveAssemblyReference.cache
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Business\obj\Debug\Business.dll
+E:\Project_dotNet\CourseSelectionSystem\CourseSelectionSystem\Business\obj\Debug\Business.pdb

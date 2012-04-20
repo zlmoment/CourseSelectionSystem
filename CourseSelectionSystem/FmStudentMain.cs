@@ -25,7 +25,7 @@ namespace CourseSelectionSystem
 
         private void FmStudentMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            fmLogin.Dispose();
+            fmLogin.Show();            
         }
         //修改密码
         private void button1_Click(object sender, EventArgs e)
@@ -44,6 +44,9 @@ namespace CourseSelectionSystem
                         if (userBusiness.changePasswd(userModel.Username, this.tb_newpasswd.Text))
                         {
                             MessageBox.Show("修改成功");
+                            this.tb_originpasswd.Text = "";
+                            this.tb_newpasswd.Text = "";
+                            this.tb_renewpasswd.Text = "";
                         }
                         else
                         {
@@ -53,14 +56,24 @@ namespace CourseSelectionSystem
                     else
                     {
                         MessageBox.Show("两次输入的密码不一致");
+                        this.tb_newpasswd.Text = "";
+                        this.tb_renewpasswd.Text = "";
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("原密码不正确。");
+                    MessageBox.Show("原密码不正确");
+                    this.tb_originpasswd.Text = "";
+                    this.tb_newpasswd.Text = "";
+                    this.tb_renewpasswd.Text = "";
                 }
             }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

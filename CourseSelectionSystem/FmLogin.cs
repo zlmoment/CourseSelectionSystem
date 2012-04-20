@@ -21,7 +21,17 @@ namespace CourseSelectionSystem
             skinh.Attach();
             InitializeComponent();
         }
-
+        public void notify()
+        {
+            this.button1.Text = "登陆";
+            this.button1.Enabled = true;
+            this.textBox1.Text = "";
+            this.textBox1.Enabled = true;
+            
+            this.textBox2.Text = "";
+            this.textBox2.Enabled = true;
+            this.textBox1.Focus();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             string username = this.textBox1.Text;
@@ -69,7 +79,7 @@ namespace CourseSelectionSystem
                 //0:登陆失败
                 else if (type == 0)
                 {
-                    MessageBox.Show("登陆失败，请重试。");
+                    MessageBox.Show("登陆失败，请重试");
                     this.button1.Text = "登陆";
                     this.button1.Enabled = true;
                     this.textBox1.Enabled = true;
@@ -81,6 +91,18 @@ namespace CourseSelectionSystem
         private void button2_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void FmLogin_Activated(object sender, EventArgs e)
+        {
+            this.button1.Text = "登陆";
+            this.button1.Enabled = true;
+            this.textBox1.Text = "";
+            this.textBox1.Enabled = true;
+
+            this.textBox2.Text = "";
+            this.textBox2.Enabled = true;
+            this.textBox1.Focus();
         }
 
     }
