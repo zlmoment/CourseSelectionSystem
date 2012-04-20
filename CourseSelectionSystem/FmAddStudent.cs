@@ -30,9 +30,9 @@ namespace CourseSelectionSystem
                 stunum = this.tb_stunum.Text;
                 sname = this.tb_sname.Text;
                 if (this.radioButton1.Checked)
-                    gender = 1;
+                    gender = 0;
                 else
-                    gender = 2;
+                    gender = 1;
                 startyear = this.comboBox1.Text;
                 collegeid = int.Parse(this.comboBox2.Text);
 

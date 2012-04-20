@@ -122,11 +122,11 @@ namespace CourseSelectionSystem
         //刷新学生列表
         private void button6_Click(object sender, EventArgs e)
         {
-            //这里还需要对列的显示进行自定义
+            
             StudentBusiness stuBusiness = new StudentBusiness();
             
             DataTable dt = stuBusiness.getAllStudent();
-            
+            MessageBox.Show(dt.ToString());
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = dt;
         }
@@ -168,9 +168,10 @@ namespace CourseSelectionSystem
         //刷新教师列表
         private void button13_Click(object sender, EventArgs e)
         {
-            //这里还需要对列的显示进行自定义
+            
             TeacherBusiness teaBusiness = new TeacherBusiness();
             DataTable dt = teaBusiness.getAllTeacher();
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView2.DataSource = dt;
         }
         //新增教师
@@ -182,8 +183,14 @@ namespace CourseSelectionSystem
         //修改选中学生
         private void button8_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("请直接双击单元格进行修改，修改完后回车即可！");
         }
-
+        //修改教师
+        private void button12_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("请直接双击单元格进行修改，修改完后回车即可！");
+        }
+        //学生列表编辑后保存 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             StudentModel stuModelToBeUpdated = new StudentModel();
@@ -212,6 +219,108 @@ namespace CourseSelectionSystem
         {
             
         }
+        //删除学生按钮
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定要删除吗？", "询问", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                bool isDeleteOk = true;
+                StudentBusiness stuBusiness = new StudentBusiness();
+                DataGridViewSelectedRowCollection toBeDeletedRowsCollection = this.dataGridView1.SelectedRows;
+
+                DataGridViewRow[] tobedeletedrows = new DataGridViewRow[toBeDeletedRowsCollection.Count];
+                toBeDeletedRowsCollection.CopyTo(tobedeletedrows, 0);
+                foreach (DataGridViewRow temp in tobedeletedrows)
+                {
+                    if (stuBusiness.deleteStudent(int.Parse(temp.Cells["sid"].Value.ToString())) == 0)
+                        isDeleteOk = false;
+                }
+                if (isDeleteOk)
+                {
+                    MessageBox.Show("删除成功！");
+                }
+                else
+                {
+                    MessageBox.Show("删除出现错误，请刷新列表后重试！");
+                }
+
+            }
+        }
+        //删除教师
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("确定要删除吗？", "询问", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+
+                bool isDeleteOk = true;
+                TeacherBusiness teaBusiness = new TeacherBusiness();
+                DataGridViewSelectedRowCollection toBeDeletedRowsCollection = this.dataGridView2.SelectedRows;
+                DataGridViewRow[] tobedeletedrows = new DataGridViewRow[toBeDeletedRowsCollection.Count];
+                toBeDeletedRowsCollection.CopyTo(tobedeletedrows, 0);
+                foreach (DataGridViewRow temp in tobedeletedrows)
+                {
+                    if (teaBusiness.deleteTeacher(int.Parse(temp.Cells["tid"].Value.ToString())) == 0)
+                        isDeleteOk = false;
+                }
+                if (isDeleteOk)
+                {
+                    MessageBox.Show("删除成功！");
+                }
+                else
+                {
+                    MessageBox.Show("删除出现错误，请刷新列表后重试！");
+                }
+            }
+        }
+        //教师列表编辑后保存
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            TeacherModel teaModelToBeUpdated = new TeacherModel();
+            TeacherBusiness teaBusiness = new TeacherBusiness();
+
+            teaModelToBeUpdated.Tid = int.Parse(this.dataGridView2.CurrentRow.Cells["tid"].Value.ToString());
+
+            teaModelToBeUpdated.Tname = this.dataGridView2.CurrentRow.Cells["tname"].Value.ToString();
+            teaModelToBeUpdated.Birthday = this.dataGridView2.CurrentRow.Cells["birthday"].Value.ToString();
+            teaModelToBeUpdated.Gender = int.Parse(this.dataGridView2.CurrentRow.Cells["tgender"].Value.ToString());
+            teaModelToBeUpdated.Phone = this.dataGridView2.CurrentRow.Cells["phone"].Value.ToString();
+            
+            int result = teaBusiness.updateteacher(teaModelToBeUpdated);
+            if (result != 0)
+            {
+                MessageBox.Show("更新成功");
+            }
+            else
+            {
+                MessageBox.Show("更新失败");
+            }
+        }
+        //刷新课程列表
+        private void button17_Click(object sender, EventArgs e)
+        {
+            CourseBusiness couBusiness = new CourseBusiness();
+            DataTable dt = couBusiness.getAllCourse();
+            this.dataGridView3.AutoGenerateColumns = false;
+            this.dataGridView3.DataSource = dt;
+        }
+        //新增课程
+        private void button14_Click(object sender, EventArgs e)
+        {
+            FmAddCourse fmAddCourse = new FmAddCourse();
+            fmAddCourse.ShowDialog();
+        }
+        //修改选中课程
+        private void button16_Click(object sender, EventArgs e)
+        {
+            
+        }
+        //删除选中课程
+        private void button15_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        
 
     }
 }

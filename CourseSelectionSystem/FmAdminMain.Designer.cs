@@ -31,12 +31,30 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.cid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.credit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.week = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precourse = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.tid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label3 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -51,6 +69,12 @@
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.sid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stunum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.collegeid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -61,13 +85,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tb_originPasswd = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.sid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stunum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startyear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.collegeid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage3.SuspendLayout();
@@ -105,6 +125,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button17);
+            this.tabPage2.Controls.Add(this.button16);
+            this.tabPage2.Controls.Add(this.button15);
+            this.tabPage2.Controls.Add(this.button14);
+            this.tabPage2.Controls.Add(this.dataGridView3);
             this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -112,6 +137,123 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "课程管理";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(572, 356);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(100, 29);
+            this.button17.TabIndex = 4;
+            this.button17.Text = "刷新列表";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(223, 356);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(100, 29);
+            this.button16.TabIndex = 3;
+            this.button16.Text = "修改选中";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(117, 356);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(100, 29);
+            this.button15.TabIndex = 2;
+            this.button15.Text = "删除选中";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(11, 356);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(100, 29);
+            this.button14.TabIndex = 1;
+            this.button14.Text = "新增课程";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cid,
+            this.cname,
+            this.credit,
+            this.week,
+            this.section,
+            this.ctid,
+            this.pid,
+            this.precourse});
+            this.dataGridView3.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowTemplate.Height = 23;
+            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView3.Size = new System.Drawing.Size(660, 333);
+            this.dataGridView3.TabIndex = 0;
+            // 
+            // cid
+            // 
+            this.cid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cid.DataPropertyName = "cid";
+            this.cid.HeaderText = "课序号";
+            this.cid.Name = "cid";
+            this.cid.ReadOnly = true;
+            // 
+            // cname
+            // 
+            this.cname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cname.DataPropertyName = "cname";
+            this.cname.HeaderText = "课程名";
+            this.cname.Name = "cname";
+            // 
+            // credit
+            // 
+            this.credit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.credit.DataPropertyName = "credit";
+            this.credit.HeaderText = "学分";
+            this.credit.Name = "credit";
+            // 
+            // week
+            // 
+            this.week.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.week.DataPropertyName = "week";
+            this.week.HeaderText = "周次";
+            this.week.Name = "week";
+            // 
+            // section
+            // 
+            this.section.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.section.DataPropertyName = "section";
+            this.section.HeaderText = "时间";
+            this.section.Name = "section";
+            // 
+            // ctid
+            // 
+            this.ctid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ctid.DataPropertyName = "tid";
+            this.ctid.HeaderText = "教师";
+            this.ctid.Name = "ctid";
+            // 
+            // pid
+            // 
+            this.pid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.pid.DataPropertyName = "pid";
+            this.pid.HeaderText = "地点";
+            this.pid.Name = "pid";
+            // 
+            // precourse
+            // 
+            this.precourse.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precourse.DataPropertyName = "precourse";
+            this.precourse.HeaderText = "课程";
+            this.precourse.Name = "precourse";
             // 
             // tabPage6
             // 
@@ -145,6 +287,7 @@
             this.button12.TabIndex = 3;
             this.button12.Text = "修改所选";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button11
             // 
@@ -154,6 +297,7 @@
             this.button11.TabIndex = 2;
             this.button11.Text = "删除所选";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -167,12 +311,57 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tid,
+            this.tname,
+            this.tgender,
+            this.birthday,
+            this.phone});
             this.dataGridView2.Location = new System.Drawing.Point(12, 12);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(660, 333);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
+            // 
+            // tid
+            // 
+            this.tid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tid.DataPropertyName = "tid";
+            this.tid.HeaderText = "编号";
+            this.tid.Name = "tid";
+            this.tid.ReadOnly = true;
+            // 
+            // tname
+            // 
+            this.tname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tname.DataPropertyName = "tname";
+            this.tname.HeaderText = "姓名";
+            this.tname.Name = "tname";
+            // 
+            // tgender
+            // 
+            this.tgender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tgender.DataPropertyName = "gender";
+            this.tgender.HeaderText = "性别";
+            this.tgender.Name = "tgender";
+            // 
+            // birthday
+            // 
+            this.birthday.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.birthday.DataPropertyName = "birthday";
+            this.birthday.HeaderText = "出生日期";
+            this.birthday.Name = "birthday";
+            // 
+            // phone
+            // 
+            this.phone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.phone.DataPropertyName = "phone";
+            this.phone.HeaderText = "电话";
+            this.phone.Name = "phone";
             // 
             // tabPage3
             // 
@@ -303,6 +492,7 @@
             this.button7.TabIndex = 3;
             this.button7.Text = "删除所选";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -334,6 +524,51 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
+            // 
+            // sid
+            // 
+            this.sid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sid.DataPropertyName = "sid";
+            this.sid.HeaderText = "序号";
+            this.sid.Name = "sid";
+            this.sid.ReadOnly = true;
+            this.sid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // stunum
+            // 
+            this.stunum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stunum.DataPropertyName = "stunum";
+            this.stunum.HeaderText = "学号";
+            this.stunum.Name = "stunum";
+            // 
+            // sname
+            // 
+            this.sname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sname.DataPropertyName = "sname";
+            this.sname.HeaderText = "姓名";
+            this.sname.Name = "sname";
+            // 
+            // gender
+            // 
+            this.gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gender.DataPropertyName = "gender";
+            this.gender.HeaderText = "性别";
+            this.gender.Name = "gender";
+            this.gender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // startyear
+            // 
+            this.startyear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.startyear.DataPropertyName = "startyear";
+            this.startyear.HeaderText = "入学年份";
+            this.startyear.Name = "startyear";
+            // 
+            // collegeid
+            // 
+            this.collegeid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.collegeid.DataPropertyName = "collegeid";
+            this.collegeid.HeaderText = "学院";
+            this.collegeid.Name = "collegeid";
             // 
             // button1
             // 
@@ -429,51 +664,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "原密码";
             // 
-            // sid
-            // 
-            this.sid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sid.DataPropertyName = "sid";
-            this.sid.HeaderText = "序号";
-            this.sid.Name = "sid";
-            this.sid.ReadOnly = true;
-            this.sid.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // stunum
-            // 
-            this.stunum.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.stunum.DataPropertyName = "stunum";
-            this.stunum.HeaderText = "学号";
-            this.stunum.Name = "stunum";
-            // 
-            // sname
-            // 
-            this.sname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.sname.DataPropertyName = "sname";
-            this.sname.HeaderText = "姓名";
-            this.sname.Name = "sname";
-            // 
-            // gender
-            // 
-            this.gender.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.gender.DataPropertyName = "gender";
-            this.gender.HeaderText = "性别";
-            this.gender.Name = "gender";
-            this.gender.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // startyear
-            // 
-            this.startyear.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.startyear.DataPropertyName = "startyear";
-            this.startyear.HeaderText = "入学年份";
-            this.startyear.Name = "startyear";
-            // 
-            // collegeid
-            // 
-            this.collegeid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.collegeid.DataPropertyName = "collegeid";
-            this.collegeid.HeaderText = "学院";
-            this.collegeid.Name = "collegeid";
-            // 
             // FmAdminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -488,6 +678,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FmAdminMain_FormClosed);
             this.Load += new System.EventHandler(this.FmAdminMain_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage3.ResumeLayout(false);
@@ -542,5 +734,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gender;
         private System.Windows.Forms.DataGridViewTextBoxColumn startyear;
         private System.Windows.Forms.DataGridViewTextBoxColumn collegeid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tgender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn birthday;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn credit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn week;
+        private System.Windows.Forms.DataGridViewTextBoxColumn section;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ctid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precourse;
     }
 }

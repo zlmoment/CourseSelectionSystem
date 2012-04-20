@@ -30,9 +30,9 @@ namespace CourseSelectionSystem
                 tname = this.tb_tname.Text;
                 phone = this.tb_phone.Text;
                 if (this.radioButton1.Checked)
-                    gender = 1;
+                    gender = 0;
                 else
-                    gender = 2;
+                    gender = 1;
                 birthday = this.dateTimePicker1.Text;
                 
                 TeacherModel teacherModel = new TeacherModel(0, 0, tname, gender, birthday, phone);

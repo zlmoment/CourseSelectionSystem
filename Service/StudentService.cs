@@ -76,7 +76,24 @@ namespace Service
                 cmd.Parameters.AddWithValue("@startyear", stuModel.Startyear);
                 cmd.Parameters.AddWithValue("@collegeid", stuModel.Collegeid);
                 cmd.Parameters.AddWithValue("@sid", stuModel.Sid);
-                //string cmdstring = 
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
+        public int delete(int sid)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("delete from `tb_student` where `sid`=@sid", conn);
+                cmd.Parameters.AddWithValue("@sid", sid);
                 int result = cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 return result;

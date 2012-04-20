@@ -53,6 +53,46 @@ namespace Service
                 return null;
             }
         }
+        public int update(TeacherModel teaModel)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("update `tb_teacher` set `tname`=@tname, `gender`=@gender, `birthday`=@birthday, `phone`=@phone where `tid`=@tid", conn);
+                cmd.Parameters.AddWithValue("@tname", teaModel.Tname);
+                cmd.Parameters.AddWithValue("@gender", teaModel.Gender);
+                cmd.Parameters.AddWithValue("@birthday", teaModel.Birthday);
+                cmd.Parameters.AddWithValue("@phone", teaModel.Phone);
+                cmd.Parameters.AddWithValue("@tid", teaModel.Tid);
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
+        public int delete(int tid)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("delete from `tb_teacher` where `tid`=@tid", conn);
+                cmd.Parameters.AddWithValue("@tid", tid);
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return result;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
         public int getTidByUid(int uid)
         {
             MySqlConnection conn = GetConn.getConn();

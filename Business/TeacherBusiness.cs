@@ -28,6 +28,14 @@ namespace Business
             }
             return tid;
         }
+        public int updateteacher(TeacherModel teaModel)
+        {
+            return new TeacherService().update(teaModel);
+        }
+        public int deleteTeacher(int tid)
+        {
+            return new TeacherService().delete(tid);
+        }
         public DataTable getAllTeacher()
         {
             TeacherService teaService = new TeacherService();

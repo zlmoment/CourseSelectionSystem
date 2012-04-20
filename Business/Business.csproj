@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNewsBusiness.cs" />
+    <Compile Include="CourseBusiness.cs" />
     <Compile Include="DeleteNewsBusiness.cs" />
     <Compile Include="GetAllNewsListBusiness.cs" />
     <Compile Include="StudentBusiness.cs" />

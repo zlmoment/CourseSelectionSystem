@@ -1,0 +1,9 @@
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\Business\bin\Debug\Business.dll
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\Business\bin\Debug\Business.pdb
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\Business\bin\Debug\Model.dll
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\Business\bin\Debug\Service.dll
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\Business\bin\Debug\Model.pdb
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\Business\bin\Debug\Service.pdb
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\Business\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\Business\obj\Debug\Business.dll
+C:\Users\Administrator\documents\visual studio 2010\Projects\CourseSelectionSystem\Business\obj\Debug\Business.pdb

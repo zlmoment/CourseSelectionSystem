@@ -34,6 +34,10 @@ namespace Business
         {
             return new StudentService().update(stuModel);
         }
+        public int deleteStudent(int sid)
+        {
+            return new StudentService().delete(sid);
+        }
         public StudentModel getStuBySid(int sid)
         {
             return new StudentService().getStuBySid(sid);
