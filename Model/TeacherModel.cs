@@ -26,7 +26,12 @@ namespace Model
 
         public TeacherModel()
         {
-
+            this.tid = -1;
+            this.uid = -1;
+            this.tname = "";
+            this.gender = 0;
+            this.birthday = "";
+            this.phone = "";
         }
 
         public string Phone

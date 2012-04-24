@@ -79,6 +79,28 @@ namespace Service
                 return null;
             }
         }
+        public DataTable getCourseBySid(int sid, int semester)
+        {
+            //多表联查
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_course` where `cid` in (select `cid` from `tb_sc` where `sid`=@sid and `semester`=@semester)", conn);
+                cmd.Parameters.AddWithValue("@sid", sid);
+                cmd.Parameters.AddWithValue("@semester", semester);
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+                conn.Close();
+                return dt;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return null;
+            }
+        }
         public int delete(int cid)
         {
             MySqlConnection conn = GetConn.getConn();
@@ -123,6 +145,7 @@ namespace Service
                 return 0;
             }
         }
+
         public List<CourseModel> getAllCourseBySid(int sid,int semester)
         {
             MySqlConnection conn = GetConn.getConn();
@@ -158,6 +181,94 @@ namespace Service
             {
                 conn.Close();
                 return null;
+            }
+        }
+
+        public CourseModel getCoursebyCid(int cid)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            CourseModel cModel = new CourseModel();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_course`where cid = @cid", conn);
+                cmd.Parameters.AddWithValue("@cid", cid);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    cModel.Cid = int.Parse(reader["cid"].ToString());
+                    cModel.Cname = reader["cname"].ToString();
+                    cModel.Credit = int.Parse(reader["credit"].ToString());
+                    cModel.Week = int.Parse(reader["week"].ToString());
+                    cModel.Section = int.Parse(reader["section"].ToString());
+                    cModel.Tid = int.Parse(reader["tid"].ToString());
+                    cModel.Pid = int.Parse(reader["pid"].ToString());
+                    cModel.Precourse = int.Parse(reader["precourse"].ToString());
+                    //cModel.Maxstu = int.Parse(reader["maxstu"].ToString());  
+                }
+                conn.Close();
+                return cModel;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return null;
+            }
+        }
+
+        public int insertSelectedCourse(ScModel scModel)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd1 = new MySqlCommand("select * from `tb_sc` where sid=@sid and cid=@cid", conn);
+                cmd1.Parameters.AddWithValue("@sid", scModel.Sid);
+                cmd1.Parameters.AddWithValue("@cid", scModel.Cid);
+                //cmd1.Parameters.AddWithValue("@semester", scModel.Semester);
+                MySqlDataReader reader = cmd1.ExecuteReader();
+                if (reader.Read())
+                {
+                    conn.Close();
+                    return 0;
+                }
+                else
+                {
+                    conn.Close();
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand("insert into `tb_sc`(sid,cid,semester) values (@sid, @cid, @semester)", conn);
+                    cmd.Parameters.AddWithValue("@sid", scModel.Sid);
+                    cmd.Parameters.AddWithValue("@cid", scModel.Cid);
+                    cmd.Parameters.AddWithValue("@semester", scModel.Semester);
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    return 1;
+                }                
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return -1;
+            }
+        }
+
+        public bool deleteSelectedCourse(int sid, int cid)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("delete from `tb_sc` where `sid`=@sid and cid =@cid", conn);
+                cmd.Parameters.AddWithValue("@sid", sid);
+                cmd.Parameters.AddWithValue("@cid", cid);                
+                int result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+                return true;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return false;
             }
         }
     }

@@ -38,6 +38,12 @@ namespace Business
                 }
 
             }
+            TeacherService teachService = new TeacherService();
+            dt.Columns.Add("tname", typeof(string));
+            foreach (DataRow dr in dt.Rows)
+            {
+                dr["tname"] = teachService.getTnameByTid(int.Parse(dr["tid"].ToString()));
+            }
             return dt;
         }
         public int deleteCourse(int cid)
@@ -68,6 +74,65 @@ namespace Business
                     dr["trans_week"] = "9-16";
                 }
 
+            }
+            return dt;
+        }
+
+        public CourseInfo getCourseInfobyCid(int cid)
+        {
+            CourseModel cModel = new CourseService().getCoursebyCid(cid);
+            TeacherModel tModel = new TeacherService().getTeacherByTid(cModel.Tid);
+            PlaceModel pModel = new PlaceService().getPlacebyPid(cModel.Pid);
+            string precName = (new CourseService().getCoursebyCid(cModel.Precourse)).Cname;
+            CourseInfo courseInfo = new CourseInfo(cModel, tModel, pModel, precName);
+            return courseInfo;
+        }
+
+        public int selectCourse(int sid, int cid) 
+        {
+            int semester = 1;
+            ScModel scModel = new ScModel(sid, cid, semester);
+            CourseService courseService = new CourseService();
+            return courseService.insertSelectedCourse(scModel);
+        }
+
+        public bool deleteCourse(int sid, int cid)
+        {
+            //int semester = 1;
+            CourseService courseService = new CourseService();
+            if (courseService.deleteSelectedCourse(sid, cid))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+        public DataTable getAllCoursebySid(int sid)
+        {
+            CourseService couService = new CourseService();
+            DataTable dt = couService.getCourseBySid(sid,1);
+            dt.Columns.Add("trans_week", typeof(string));
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["week"].ToString() == "1")
+                {
+                    dr["trans_week"] = "1-16";
+                }
+                else if (dr["week"].ToString() == "2")
+                {
+                    dr["trans_week"] = "1-8";
+                }
+                else
+                {
+                    dr["trans_week"] = "9-16";
+                }
+
+            }
+            TeacherService teachService = new TeacherService();
+            dt.Columns.Add("tname", typeof(string));
+            foreach (DataRow dr in dt.Rows)
+            {
+                dr["tname"] = teachService.getTnameByTid(int.Parse(dr["tid"].ToString()));
             }
             return dt;
         }

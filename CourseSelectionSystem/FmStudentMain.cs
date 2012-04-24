@@ -15,11 +15,14 @@ namespace CourseSelectionSystem
     {
         FmLogin fmLogin;
         UserModel userModel;
+        StudentModel studentModel;
         public FmStudentMain(FmLogin fmLogin, UserModel userModel)
         {
             InitializeComponent();
             this.fmLogin = fmLogin;
             this.userModel = userModel;
+            StudentBusiness sBusiness = new StudentBusiness();
+            this.studentModel = sBusiness.getStuBySid(sBusiness.getSidByUid(userModel.Uid));
             fmLogin.Hide();
         }
 
@@ -73,7 +76,74 @@ namespace CourseSelectionSystem
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (this.tabControl1.SelectedIndex == 2)
+            {
+                int sid = new StudentBusiness().getSidByUid(userModel.Uid);
+                List<CourseInfo> courseInfoList = new GetTimetableBusiness().getTimetable(this.studentModel.Sid);
+                int section = 0;
+                if (courseInfoList != null)
+                {
+                    foreach (CourseInfo courseInfo in courseInfoList)
+                    {
+                        section = courseInfo.sectionNom;
+                        ((System.Windows.Forms.Label)(this.Controls.Find("lb_" + section.ToString(), true)[0])).Text = courseInfo.getCourseInfo();
+                    }
+                }            
+            }
+        }
+
+
+        private void btn_refreshCL_Click(object sender, EventArgs e)
+        {
+            CourseBusiness couBusiness = new CourseBusiness();
+            DataTable dt = couBusiness.getAllCourse();
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.DataSource = dt;
+        }
+
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            DataGridViewSelectedRowCollection selectedRow = this.dataGridView1.SelectedRows;
+
+            foreach (DataGridViewRow row in selectedRow)
+            {
+                CourseInfo courseInfo = new CourseBusiness().getCourseInfobyCid(int.Parse(row.Cells["cid"].Value.ToString()));
+                this.textBox1.Text = "课程简介： " + courseInfo.getBriefIntro();
+            }
+        }
+
+        private void btn_select_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection selectedRow = this.dataGridView1.SelectedRows;
+            if (selectedRow != null)
+            {
+                foreach (DataGridViewRow row in selectedRow)
+                {
+                    CourseBusiness courseBusiness = new CourseBusiness();
+                    int isSelected = courseBusiness.selectCourse(this.studentModel.Sid, int.Parse(row.Cells["cid"].Value.ToString()));
+                    if (isSelected == 1)
+                        MessageBox.Show("选课成功!");
+                    else if (isSelected == 0)
+                        MessageBox.Show("您已选中此课");
+                    else
+                        MessageBox.Show("选课失败，请再试一次");
+                }
+            }
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CourseBusiness couBusiness = new CourseBusiness();
+            DataTable dt = couBusiness.getAllCoursebySid(this.studentModel.Sid);
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.DataSource = dt;
         }
     }
 }

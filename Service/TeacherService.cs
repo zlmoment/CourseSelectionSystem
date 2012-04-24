@@ -117,5 +117,60 @@ namespace Service
                 return 0;
             }
         }
+
+        public TeacherModel getTeacherByTid(int tid)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            TeacherModel teacherModel = new TeacherModel();
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_teacher` where `tid`=@tid", conn);
+                cmd.Parameters.AddWithValue("@tid", tid);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    teacherModel.Tid = int.Parse(reader["tid"].ToString());
+                    teacherModel.Uid = int.Parse(reader["uid"].ToString());
+                    teacherModel.Tname = reader["tname"].ToString();
+                    teacherModel.Gender = int.Parse(reader["gender"].ToString());
+                    teacherModel.Birthday = reader["birthday"].ToString();
+                    teacherModel.Phone = reader["phone"].ToString();
+                }
+                conn.Close();
+                return teacherModel;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return null;
+            }
+        }
+
+        public string getTnameByTid(int tid)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd;
+                cmd = new MySqlCommand("select tname from `tb_teacher` where `tid`=@tid", conn);
+                cmd.Parameters.AddWithValue("@tid", tid);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                String tname = "";
+                if (reader.Read())
+                {
+                    tname = (string)reader["tname"];
+                }
+                conn.Close();
+                return tname;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return null;
+            }
+        }
     }
 }

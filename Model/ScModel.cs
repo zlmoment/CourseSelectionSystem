@@ -7,15 +7,17 @@ namespace Model
 {
     public class ScModel
     {
-        private int id;
+        //private int id;
         private int sid;
         private int cid;
+        private int semester;
 
-        public ScModel(int id, int sid, int cid)
+        public ScModel(/*int id, */int sid, int cid, int semester)
         {
-            this.id = id;
+            //this.id = id;
             this.sid = sid;
             this.cid = cid;
+            this.semester = semester;
         }
 
         public ScModel()
@@ -37,11 +39,16 @@ namespace Model
         }
         
 
-        public int Id
+        //public int Id
+        //{
+        //    get { return id; }
+        //    set { id = value; }
+        //}
+
+        public int Semester
         {
-            get { return id; }
-            set { id = value; }
+            get { return semester; }
+            set { semester = value; }
         }
-        
     }
 }

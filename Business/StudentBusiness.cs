@@ -57,5 +57,9 @@ namespace Business
         {
             return new StudentService().getStuBySid(sid);
         }
+        public int getSidByUid(int uid)
+        {
+            return new StudentService().getSidByUid(uid);
+        }
     }
 }

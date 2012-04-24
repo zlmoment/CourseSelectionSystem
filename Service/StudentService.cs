@@ -133,5 +133,30 @@ namespace Service
                 return null;
             }
         }
+
+        public int getSidByUid(int uid)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd;
+                cmd = new MySqlCommand("select * from `tb_student` where `uid`=@uid", conn);
+                cmd.Parameters.AddWithValue("@uid", uid);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                int tid = 0;
+                if (reader.Read())
+                {
+                    tid = int.Parse(reader["sid"].ToString());
+                }
+                conn.Close();
+                return tid;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
     }
 }
