@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2012 年 04 月 23 日 16:34
+-- 生成日期: 2012 年 04 月 26 日 17:46
 -- 服务器版本: 5.5.20
 -- PHP 版本: 5.3.10
 
@@ -60,15 +60,17 @@ CREATE TABLE IF NOT EXISTS `tb_course` (
   `precourse` varchar(50) NOT NULL DEFAULT '',
   `maxstu` int(5) NOT NULL,
   PRIMARY KEY (`cid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- 转存表中的数据 `tb_course`
 --
 
 INSERT INTO `tb_course` (`cid`, `cname`, `credit`, `week`, `section`, `tid`, `pid`, `precourse`, `maxstu`) VALUES
-(2, '333', 4, 3, 3, 3, 3, '3', 0),
-(3, 'wwwwww', 1, 2, 1, 1, 2, '0', 30);
+(2, '333', 4, 1, 3, 1, 3, '3', 0),
+(4, '2431232', 2, 3, 26, 3, 3, '0', 50),
+(5, '123', 1, 1, 26, 3, 6, '0', 123),
+(6, '1111', 1, 3, 14, 3, 1, '0', 12);
 
 -- --------------------------------------------------------
 
@@ -106,9 +108,20 @@ DROP TABLE IF EXISTS `tb_place`;
 CREATE TABLE IF NOT EXISTS `tb_place` (
   `pid` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `pname` varchar(20) NOT NULL DEFAULT '',
-  `parentpid` int(11) NOT NULL,
   PRIMARY KEY (`pid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- 转存表中的数据 `tb_place`
+--
+
+INSERT INTO `tb_place` (`pid`, `pname`) VALUES
+(1, 'YF318'),
+(2, 'YF411'),
+(3, 'YF502'),
+(4, 'YF604'),
+(5, 'SY207'),
+(6, 'DQ311');
 
 -- --------------------------------------------------------
 
@@ -123,15 +136,15 @@ CREATE TABLE IF NOT EXISTS `tb_sc` (
   `cid` int(11) NOT NULL,
   `semester` int(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- 转存表中的数据 `tb_sc`
 --
 
 INSERT INTO `tb_sc` (`id`, `sid`, `cid`, `semester`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 2);
+(17, 1, 4, 6),
+(16, 1, 6, 6);
 
 -- --------------------------------------------------------
 
@@ -149,16 +162,17 @@ CREATE TABLE IF NOT EXISTS `tb_student` (
   `startyear` varchar(4) NOT NULL DEFAULT '',
   `collegeid` int(11) NOT NULL,
   PRIMARY KEY (`sid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `tb_student`
 --
 
 INSERT INTO `tb_student` (`sid`, `uid`, `stunum`, `sname`, `gender`, `startyear`, `collegeid`) VALUES
-(1, 2, '09301104', '李昭谕', 1, '2000', 1),
+(1, 2, '09301104', '李昭谕', 0, '2009', 2),
 (2, 3, '09301097', '黄晓雯', 0, '2009', 1),
-(6, 4, '09301111', '123123', 0, '2009', 2);
+(7, 11, '123123123', '123', 1, '2009', 3),
+(6, 4, '09301111', '123123', 0, '2009', 3);
 
 -- --------------------------------------------------------
 
@@ -189,14 +203,15 @@ CREATE TABLE IF NOT EXISTS `tb_teacher` (
   `birthday` varchar(20) NOT NULL,
   `phone` varchar(15) DEFAULT '',
   PRIMARY KEY (`tid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `tb_teacher`
 --
 
 INSERT INTO `tb_teacher` (`tid`, `uid`, `tname`, `gender`, `birthday`, `phone`) VALUES
-(1, 6, '冯凤娟', 0, '2012年4月13日', '15210581112');
+(1, 6, 'ffj', 0, '2012年4月13日', '15210581112'),
+(3, 10, 'whl', 1, '2012年4月26日', '15200000000');
 
 -- --------------------------------------------------------
 
@@ -211,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
   `password` varchar(20) NOT NULL DEFAULT '',
   `type` int(1) NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- 转存表中的数据 `tb_user`
@@ -219,14 +234,16 @@ CREATE TABLE IF NOT EXISTS `tb_user` (
 
 INSERT INTO `tb_user` (`uid`, `username`, `password`, `type`) VALUES
 (1, 'admin', 'nimda', 3),
-(2, '09301104', '123456', 1),
+(2, '09301104', '1', 1),
 (3, '09301097', '123456', 1),
 (4, '09301111', '123456', 1),
 (5, '09301111', '123456', 1),
 (6, '冯凤娟', '123456', 2),
 (7, '09301021', '123456', 1),
 (8, '1231', '123456', 2),
-(9, '09301111', '123456', 1);
+(9, '09301111', '123456', 1),
+(10, '王红亮', '123456', 2),
+(11, '123123123', '123456', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
