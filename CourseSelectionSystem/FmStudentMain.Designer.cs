@@ -29,13 +29,13 @@ namespace CourseSelectionSystem
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmStudentMain));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_filter_section = new System.Windows.Forms.ComboBox();
+            this.cb_filter_week = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btn_select = new System.Windows.Forms.Button();
@@ -55,6 +55,14 @@ namespace CourseSelectionSystem
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.s_cid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s_cname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s_tname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s_credit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s_duaration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s_section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s_pname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.s_maxstu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lb_42 = new System.Windows.Forms.Label();
             this.lb_36 = new System.Windows.Forms.Label();
@@ -127,15 +135,14 @@ namespace CourseSelectionSystem
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.s_cid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.s_cname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.s_tname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.s_credit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.s_duaration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.s_section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.s_pname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.s_maxstu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage5.SuspendLayout();
@@ -143,6 +150,8 @@ namespace CourseSelectionSystem
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -163,6 +172,11 @@ namespace CourseSelectionSystem
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.pictureBox2);
+            this.tabPage1.Controls.Add(this.listBox1);
+            this.tabPage1.Controls.Add(this.label28);
+            this.tabPage1.Controls.Add(this.label27);
+            this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -173,9 +187,8 @@ namespace CourseSelectionSystem
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.comboBox3);
-            this.tabPage2.Controls.Add(this.comboBox2);
-            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.cb_filter_section);
+            this.tabPage2.Controls.Add(this.cb_filter_week);
             this.tabPage2.Controls.Add(this.label25);
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.btn_select);
@@ -189,32 +202,72 @@ namespace CourseSelectionSystem
             this.tabPage2.Text = "选课";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // comboBox3
+            // cb_filter_section
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(324, 9);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 20);
-            this.comboBox3.TabIndex = 7;
-            this.comboBox3.Text = "全部时间";
+            this.cb_filter_section.FormattingEnabled = true;
+            this.cb_filter_section.Items.AddRange(new object[] {
+            "周一（1）",
+            "周一（2）",
+            "周一（3）",
+            "周一（4）",
+            "周一（5）",
+            "周一（6）",
+            "周二（1）",
+            "周二（2）",
+            "周二（3）",
+            "周二（4）",
+            "周二（5）",
+            "周二（6）",
+            "周三（1）",
+            "周三（2）",
+            "周三（3）",
+            "周三（4）",
+            "周三（5）",
+            "周三（6）",
+            "周四（1）",
+            "周四（2）",
+            "周四（3）",
+            "周四（4）",
+            "周四（5）",
+            "周四（6）",
+            "周五（1）",
+            "周五（2）",
+            "周五（3）",
+            "周五（4）",
+            "周五（5）",
+            "周五（6）",
+            "周六（1）",
+            "周六（2）",
+            "周六（3）",
+            "周六（4）",
+            "周六（5）",
+            "周六（6）",
+            "周日（1）",
+            "周日（2）",
+            "周日（3）",
+            "周日（4）",
+            "周日（5）",
+            "周日（6）",
+            "全部时间"});
+            this.cb_filter_section.Location = new System.Drawing.Point(212, 9);
+            this.cb_filter_section.Name = "cb_filter_section";
+            this.cb_filter_section.Size = new System.Drawing.Size(121, 20);
+            this.cb_filter_section.TabIndex = 7;
+            this.cb_filter_section.Text = "全部时间";
             // 
-            // comboBox2
+            // cb_filter_week
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(197, 9);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 6;
-            this.comboBox2.Text = "全部周次";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(70, 9);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.Text = "全部学院";
+            this.cb_filter_week.FormattingEnabled = true;
+            this.cb_filter_week.Items.AddRange(new object[] {
+            "1-16",
+            "1-8",
+            "9-16",
+            "全部周次"});
+            this.cb_filter_week.Location = new System.Drawing.Point(75, 9);
+            this.cb_filter_week.Name = "cb_filter_week";
+            this.cb_filter_week.Size = new System.Drawing.Size(121, 20);
+            this.cb_filter_week.TabIndex = 6;
+            this.cb_filter_week.Text = "全部周次";
             // 
             // label25
             // 
@@ -287,8 +340,8 @@ namespace CourseSelectionSystem
             // 
             this.cid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.cid.DataPropertyName = "cid";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.cid.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.cid.DefaultCellStyle = dataGridViewCellStyle19;
             this.cid.FillWeight = 94.84536F;
             this.cid.HeaderText = "课序号";
             this.cid.Name = "cid";
@@ -433,6 +486,73 @@ namespace CourseSelectionSystem
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(687, 325);
             this.dataGridView2.TabIndex = 0;
+            // 
+            // s_cid
+            // 
+            this.s_cid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.s_cid.DataPropertyName = "cid";
+            this.s_cid.HeaderText = "课序号";
+            this.s_cid.Name = "s_cid";
+            this.s_cid.ReadOnly = true;
+            this.s_cid.Width = 66;
+            // 
+            // s_cname
+            // 
+            this.s_cname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.s_cname.DataPropertyName = "cname";
+            this.s_cname.HeaderText = "课程名";
+            this.s_cname.Name = "s_cname";
+            this.s_cname.ReadOnly = true;
+            // 
+            // s_tname
+            // 
+            this.s_tname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.s_tname.DataPropertyName = "tname";
+            this.s_tname.HeaderText = "授课教师";
+            this.s_tname.Name = "s_tname";
+            this.s_tname.ReadOnly = true;
+            // 
+            // s_credit
+            // 
+            this.s_credit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.s_credit.DataPropertyName = "credit";
+            this.s_credit.HeaderText = "学分";
+            this.s_credit.Name = "s_credit";
+            this.s_credit.ReadOnly = true;
+            this.s_credit.Width = 51;
+            // 
+            // s_duaration
+            // 
+            this.s_duaration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.s_duaration.DataPropertyName = "trans_week";
+            this.s_duaration.HeaderText = "周次";
+            this.s_duaration.Name = "s_duaration";
+            this.s_duaration.ReadOnly = true;
+            // 
+            // s_section
+            // 
+            this.s_section.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.s_section.DataPropertyName = "trans_section";
+            this.s_section.HeaderText = "节次";
+            this.s_section.Name = "s_section";
+            this.s_section.ReadOnly = true;
+            // 
+            // s_pname
+            // 
+            this.s_pname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.s_pname.DataPropertyName = "trans_pid";
+            this.s_pname.HeaderText = "地点";
+            this.s_pname.Name = "s_pname";
+            this.s_pname.ReadOnly = true;
+            // 
+            // s_maxstu
+            // 
+            this.s_maxstu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.s_maxstu.DataPropertyName = "maxstu";
+            this.s_maxstu.HeaderText = "课堂容量";
+            this.s_maxstu.Name = "s_maxstu";
+            this.s_maxstu.ReadOnly = true;
+            this.s_maxstu.Width = 61;
             // 
             // tabPage3
             // 
@@ -1227,6 +1347,7 @@ namespace CourseSelectionSystem
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.pictureBox1);
             this.tabPage4.Controls.Add(this.groupBox1);
             this.tabPage4.Location = new System.Drawing.Point(4, 34);
             this.tabPage4.Name = "tabPage4";
@@ -1244,16 +1365,16 @@ namespace CourseSelectionSystem
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(49, 54);
+            this.groupBox1.Location = new System.Drawing.Point(339, 54);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(572, 268);
+            this.groupBox1.Size = new System.Drawing.Size(282, 268);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "修改密码";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(252, 185);
+            this.button1.Location = new System.Drawing.Point(92, 181);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 34);
             this.button1.TabIndex = 6;
@@ -1263,29 +1384,32 @@ namespace CourseSelectionSystem
             // 
             // tb_renewpasswd
             // 
-            this.tb_renewpasswd.Location = new System.Drawing.Point(252, 129);
+            this.tb_renewpasswd.Location = new System.Drawing.Point(92, 125);
             this.tb_renewpasswd.Name = "tb_renewpasswd";
+            this.tb_renewpasswd.PasswordChar = '*';
             this.tb_renewpasswd.Size = new System.Drawing.Size(151, 21);
             this.tb_renewpasswd.TabIndex = 5;
             // 
             // tb_newpasswd
             // 
-            this.tb_newpasswd.Location = new System.Drawing.Point(252, 88);
+            this.tb_newpasswd.Location = new System.Drawing.Point(92, 84);
             this.tb_newpasswd.Name = "tb_newpasswd";
+            this.tb_newpasswd.PasswordChar = '*';
             this.tb_newpasswd.Size = new System.Drawing.Size(151, 21);
             this.tb_newpasswd.TabIndex = 4;
             // 
             // tb_originpasswd
             // 
-            this.tb_originpasswd.Location = new System.Drawing.Point(252, 48);
+            this.tb_originpasswd.Location = new System.Drawing.Point(92, 44);
             this.tb_originpasswd.Name = "tb_originpasswd";
+            this.tb_originpasswd.PasswordChar = '*';
             this.tb_originpasswd.Size = new System.Drawing.Size(151, 21);
             this.tb_originpasswd.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(184, 132);
+            this.label3.Location = new System.Drawing.Point(24, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 2;
@@ -1294,7 +1418,7 @@ namespace CourseSelectionSystem
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(196, 91);
+            this.label2.Location = new System.Drawing.Point(36, 87);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 1;
@@ -1303,78 +1427,73 @@ namespace CourseSelectionSystem
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(196, 51);
+            this.label1.Location = new System.Drawing.Point(36, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "原密码";
             // 
-            // s_cid
+            // label26
             // 
-            this.s_cid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.s_cid.DataPropertyName = "cid";
-            this.s_cid.HeaderText = "课序号";
-            this.s_cid.Name = "s_cid";
-            this.s_cid.ReadOnly = true;
-            this.s_cid.Width = 66;
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label26.ForeColor = System.Drawing.Color.Purple;
+            this.label26.Location = new System.Drawing.Point(149, 36);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(411, 28);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "欢迎登陆选课系统，您现在的身份是学生。";
             // 
-            // s_cname
+            // label27
             // 
-            this.s_cname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.s_cname.DataPropertyName = "cname";
-            this.s_cname.HeaderText = "课程名";
-            this.s_cname.Name = "s_cname";
-            this.s_cname.ReadOnly = true;
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label27.Location = new System.Drawing.Point(230, 74);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(234, 21);
+            this.label27.TabIndex = 1;
+            this.label27.Text = "请点击各选项卡查看所有功能。";
             // 
-            // s_tname
+            // label28
             // 
-            this.s_tname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.s_tname.DataPropertyName = "tname";
-            this.s_tname.HeaderText = "授课教师";
-            this.s_tname.Name = "s_tname";
-            this.s_tname.ReadOnly = true;
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label28.ForeColor = System.Drawing.Color.Blue;
+            this.label28.Location = new System.Drawing.Point(39, 172);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(170, 21);
+            this.label28.TabIndex = 2;
+            this.label28.Text = "最新公告（双击查看）";
             // 
-            // s_credit
+            // listBox1
             // 
-            this.s_credit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.s_credit.DataPropertyName = "credit";
-            this.s_credit.HeaderText = "学分";
-            this.s_credit.Name = "s_credit";
-            this.s_credit.ReadOnly = true;
-            this.s_credit.Width = 54;
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBox1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 21;
+            this.listBox1.Location = new System.Drawing.Point(43, 207);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(310, 168);
+            this.listBox1.TabIndex = 3;
+            this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
-            // s_duaration
+            // pictureBox1
             // 
-            this.s_duaration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.s_duaration.DataPropertyName = "trans_week";
-            this.s_duaration.HeaderText = "周次";
-            this.s_duaration.Name = "s_duaration";
-            this.s_duaration.ReadOnly = true;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(41, 69);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(263, 253);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
-            // s_section
+            // pictureBox2
             // 
-            this.s_section.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.s_section.DataPropertyName = "trans_section";
-            this.s_section.HeaderText = "节次";
-            this.s_section.Name = "s_section";
-            this.s_section.ReadOnly = true;
-            // 
-            // s_pname
-            // 
-            this.s_pname.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.s_pname.DataPropertyName = "trans_pid";
-            this.s_pname.HeaderText = "地点";
-            this.s_pname.Name = "s_pname";
-            this.s_pname.ReadOnly = true;
-            // 
-            // s_maxstu
-            // 
-            this.s_maxstu.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.s_maxstu.DataPropertyName = "maxstu";
-            this.s_maxstu.HeaderText = "课堂容量";
-            this.s_maxstu.Name = "s_maxstu";
-            this.s_maxstu.ReadOnly = true;
-            this.s_maxstu.Width = 78;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(462, 191);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(169, 149);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
             // 
             // FmStudentMain
             // 
@@ -1386,9 +1505,12 @@ namespace CourseSelectionSystem
             this.MaximizeBox = false;
             this.Name = "FmStudentMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "欢迎使用选课系统";
+            this.Text = "欢迎使用选课系统 - 学生";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FmStudentMain_FormClosed);
+            this.Load += new System.EventHandler(this.FmStudentMain_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -1400,6 +1522,8 @@ namespace CourseSelectionSystem
             this.tabPage4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1501,9 +1625,8 @@ namespace CourseSelectionSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn takenstunum;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cb_filter_week;
+        private System.Windows.Forms.ComboBox cb_filter_section;
         private System.Windows.Forms.DataGridViewTextBoxColumn s_cid;
         private System.Windows.Forms.DataGridViewTextBoxColumn s_cname;
         private System.Windows.Forms.DataGridViewTextBoxColumn s_tname;
@@ -1512,5 +1635,11 @@ namespace CourseSelectionSystem
         private System.Windows.Forms.DataGridViewTextBoxColumn s_section;
         private System.Windows.Forms.DataGridViewTextBoxColumn s_pname;
         private System.Windows.Forms.DataGridViewTextBoxColumn s_maxstu;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

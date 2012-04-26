@@ -25,6 +25,23 @@ namespace Business
         {
             return new CourseService().insert(courseModel);
         }
+        public DataTable getAllCourseWithFilter(int week, int section)
+        {
+            DataTable dt = new DataTable();
+            dt = this.getAllCourse();
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (int.Parse(dr["week"].ToString()) != week && week != 0)
+                {
+                    dr.Delete();
+                }
+                else if (int.Parse(dr["section"].ToString()) != section && section != 0)
+                {
+                    dr.Delete();
+                }
+            }
+            return dt;
+        }
         public DataTable getAllCourse()
         {
             CourseService couService = new CourseService();
@@ -140,6 +157,73 @@ namespace Business
                     dr["trans_week"] = "9-16";
                 }
 
+            }
+            dt.Columns.Add("trans_section", typeof(string));
+            foreach (DataRow dr in dt.Rows)
+            {
+                switch (dr["section"].ToString())
+                {
+                    case "1": dr["trans_section"] = "周一（1）"; break;
+                    case "2": dr["trans_section"] = "周一（2）"; break;
+                    case "3": dr["trans_section"] = "周一（3）"; break;
+                    case "4": dr["trans_section"] = "周一（4）"; break;
+                    case "5": dr["trans_section"] = "周一（5）"; break;
+                    case "6": dr["trans_section"] = "周一（6）"; break;
+                    case "7": dr["trans_section"] = "周二（1）"; break;
+                    case "8": dr["trans_section"] = "周二（2）"; break;
+                    case "9": dr["trans_section"] = "周二（3）"; break;
+                    case "10": dr["trans_section"] = "周二（4）"; break;
+                    case "11": dr["trans_section"] = "周二（5）"; break;
+                    case "12": dr["trans_section"] = "周二（6）"; break;
+                    case "13": dr["trans_section"] = "周三（1）"; break;
+                    case "14": dr["trans_section"] = "周三（2）"; break;
+                    case "15": dr["trans_section"] = "周三（3）"; break;
+                    case "16": dr["trans_section"] = "周三（4）"; break;
+                    case "17": dr["trans_section"] = "周三（5）"; break;
+                    case "18": dr["trans_section"] = "周三（6）"; break;
+                    case "19": dr["trans_section"] = "周四（1）"; break;
+                    case "20": dr["trans_section"] = "周四（2）"; break;
+                    case "21": dr["trans_section"] = "周四（3）"; break;
+                    case "22": dr["trans_section"] = "周四（4）"; break;
+                    case "23": dr["trans_section"] = "周四（5）"; break;
+                    case "24": dr["trans_section"] = "周四（6）"; break;
+                    case "25": dr["trans_section"] = "周五（1）"; break;
+                    case "26": dr["trans_section"] = "周五（2）"; break;
+                    case "27": dr["trans_section"] = "周五（3）"; break;
+                    case "28": dr["trans_section"] = "周五（4）"; break;
+                    case "29": dr["trans_section"] = "周五（5）"; break;
+                    case "30": dr["trans_section"] = "周五（6）"; break;
+                    case "31": dr["trans_section"] = "周六（1）"; break;
+                    case "32": dr["trans_section"] = "周六（2）"; break;
+                    case "33": dr["trans_section"] = "周六（3）"; break;
+                    case "34": dr["trans_section"] = "周六（4）"; break;
+                    case "35": dr["trans_section"] = "周六（5）"; break;
+                    case "36": dr["trans_section"] = "周六（6）"; break;
+                    case "37": dr["trans_section"] = "周日（1）"; break;
+                    case "38": dr["trans_section"] = "周日（2）"; break;
+                    case "39": dr["trans_section"] = "周日（3）"; break;
+                    case "40": dr["trans_section"] = "周日（4）"; break;
+                    case "41": dr["trans_section"] = "周日（5）"; break;
+                    case "42": dr["trans_section"] = "周日（6）"; break;
+                }
+            }
+            TeacherService teachService = new TeacherService();
+            dt.Columns.Add("tname", typeof(string));
+            foreach (DataRow dr in dt.Rows)
+            {
+                dr["tname"] = teachService.getTnameByTid(int.Parse(dr["tid"].ToString()));
+            }
+            dt.Columns.Add("trans_pid", typeof(string));
+            PlaceService placeService = new PlaceService();
+            foreach (DataRow dr in dt.Rows)
+            {
+                dr["trans_pid"] = placeService.getPlacebyPid(int.Parse(dr["pid"].ToString())).Pname;
+            }
+            //已选人数
+            dt.Columns.Add("takenstunum", typeof(string));
+            foreach (DataRow dr in dt.Rows)
+            {
+                dr["takenstunum"] = couService.getTakeStuNumByCid(int.Parse(dr["cid"].ToString()), global_semester);
             }
             return dt;
         }

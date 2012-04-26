@@ -16,6 +16,8 @@ namespace CourseSelectionSystem
         FmLogin fmLogin;
         UserModel userModel;
         StudentModel studentModel;
+        NewsModel[] newsModelList = null;
+
         public FmStudentMain(FmLogin fmLogin, UserModel userModel)
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace CourseSelectionSystem
             StudentBusiness sBusiness = new StudentBusiness();
             this.studentModel = sBusiness.getStuBySid(sBusiness.getSidByUid(userModel.Uid));
             fmLogin.Hide();
+
         }
         //窗体关闭
         private void FmStudentMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -108,7 +111,81 @@ namespace CourseSelectionSystem
         private void btn_refreshCL_Click(object sender, EventArgs e)
         {
             CourseBusiness couBusiness = new CourseBusiness(this.studentModel.Sid);
-            DataTable dt = couBusiness.getAllCourse();
+            DataTable dt = new DataTable();
+            //没有过滤条件
+            if (this.cb_filter_week.Text=="全部周次" && this.cb_filter_section.Text=="全部时间")
+            {
+                dt = couBusiness.getAllCourse();
+            }
+            else
+            {
+                int section = 0, week = 0;
+                switch (this.cb_filter_section.Text)
+                {
+                    case "周一（1）": section = 1; break;
+                    case "周一（2）": section = 2; break;
+                    case "周一（3）": section = 3; break;
+                    case "周一（4）": section = 4; break;
+                    case "周一（5）": section = 5; break;
+                    case "周一（6）": section = 6; break;
+                    case "周二（1）": section = 7; break;
+                    case "周二（2）": section = 8; break;
+                    case "周二（3）": section = 9; break;
+                    case "周二（4）": section = 10; break;
+                    case "周二（5）": section = 11; break;
+                    case "周二（6）": section = 12; break;
+                    case "周三（1）": section = 13; break;
+                    case "周三（2）": section = 14; break;
+                    case "周三（3）": section = 15; break;
+                    case "周三（4）": section = 16; break;
+                    case "周三（5）": section = 17; break;
+                    case "周三（6）": section = 18; break;
+                    case "周四（1）": section = 19; break;
+                    case "周四（2）": section = 20; break;
+                    case "周四（3）": section = 21; break;
+                    case "周四（4）": section = 22; break;
+                    case "周四（5）": section = 23; break;
+                    case "周四（6）": section = 24; break;
+                    case "周五（1）": section = 25; break;
+                    case "周五（2）": section = 26; break;
+                    case "周五（3）": section = 27; break;
+                    case "周五（4）": section = 28; break;
+                    case "周五（5）": section = 29; break;
+                    case "周五（6）": section = 30; break;
+                    case "周六（1）": section = 31; break;
+                    case "周六（2）": section = 32; break;
+                    case "周六（3）": section = 33; break;
+                    case "周六（4）": section = 34; break;
+                    case "周六（5）": section = 35; break;
+                    case "周六（6）": section = 36; break;
+                    case "周日（1）": section = 37; break;
+                    case "周日（2）": section = 38; break;
+                    case "周日（3）": section = 39; break;
+                    case "周日（4）": section = 40; break;
+                    case "周日（5）": section = 41; break;
+                    case "周日（6）": section = 42; break;
+                    case "全部时间": section = 0; break;
+                }
+                if (this.cb_filter_week.Text.ToString() == "1-16")
+                {
+                    week = 1;
+                }
+                else if (this.cb_filter_week.Text.ToString() == "1-8")
+                {
+                    week = 2;
+                }
+                else if (this.cb_filter_week.Text.ToString() == "9-16")
+                {
+                    week = 3;
+                }
+                else
+                {
+                    week = 0;
+                }
+
+                dt = couBusiness.getAllCourseWithFilter(week,section);
+
+            }
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = dt;
         }
@@ -189,6 +266,32 @@ namespace CourseSelectionSystem
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.DataSource = dt;
         }
+
+        private void FmStudentMain_Load(object sender, EventArgs e)
+        {
+            //公告列表
+            GetAllNewsListBusiness getAllNewsListBusiness = new GetAllNewsListBusiness();
+            newsModelList = getAllNewsListBusiness.getAllNewsList();
+            if (newsModelList == null)
+            {
+                MessageBox.Show("读取失败，请重试。");
+            }
+            else
+            {
+                int listLength = newsModelList.Length;
+                for (int i = 0; i < listLength; i++)
+                {
+                    this.listBox1.Items.Add(newsModelList[i].Title);
+                }
+            }
+        }
+        //双击公告
+        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            FmNewsDetail fmNewsDetail = new FmNewsDetail("公告内容", newsModelList[this.listBox1.SelectedIndex]);
+            fmNewsDetail.ShowDialog();
+        }
+
         
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmAdminMain));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -89,12 +90,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tb_originPasswd = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -106,6 +105,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -127,12 +128,9 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.pictureBox1);
+            this.tabPage1.Controls.Add(this.label27);
+            this.tabPage1.Controls.Add(this.label26);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -709,6 +707,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.pictureBox2);
             this.tabPage5.Controls.Add(this.groupBox1);
             this.tabPage5.Location = new System.Drawing.Point(4, 34);
             this.tabPage5.Name = "tabPage5";
@@ -726,16 +725,16 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.tb_originPasswd);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(49, 58);
+            this.groupBox1.Location = new System.Drawing.Point(340, 58);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(276, 273);
+            this.groupBox1.Size = new System.Drawing.Size(282, 273);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "修改密码";
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(89, 177);
+            this.button9.Location = new System.Drawing.Point(98, 187);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(100, 31);
             this.button9.TabIndex = 6;
@@ -745,15 +744,16 @@
             // 
             // tb_renewpasswd
             // 
-            this.tb_renewpasswd.Location = new System.Drawing.Point(84, 115);
+            this.tb_renewpasswd.Location = new System.Drawing.Point(93, 125);
             this.tb_renewpasswd.Name = "tb_renewpasswd";
+            this.tb_renewpasswd.PasswordChar = '*';
             this.tb_renewpasswd.Size = new System.Drawing.Size(143, 21);
             this.tb_renewpasswd.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 118);
+            this.label6.Location = new System.Drawing.Point(34, 128);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 4;
@@ -761,15 +761,16 @@
             // 
             // tb_newpasswd
             // 
-            this.tb_newpasswd.Location = new System.Drawing.Point(84, 77);
+            this.tb_newpasswd.Location = new System.Drawing.Point(93, 87);
             this.tb_newpasswd.Name = "tb_newpasswd";
+            this.tb_newpasswd.PasswordChar = '*';
             this.tb_newpasswd.Size = new System.Drawing.Size(143, 21);
             this.tb_newpasswd.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 80);
+            this.label5.Location = new System.Drawing.Point(46, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 2;
@@ -777,73 +778,59 @@
             // 
             // tb_originPasswd
             // 
-            this.tb_originPasswd.Location = new System.Drawing.Point(84, 39);
+            this.tb_originPasswd.Location = new System.Drawing.Point(93, 49);
             this.tb_originPasswd.Name = "tb_originPasswd";
+            this.tb_originPasswd.PasswordChar = '*';
             this.tb_originPasswd.Size = new System.Drawing.Size(143, 21);
             this.tb_originPasswd.TabIndex = 1;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 42);
+            this.label4.Location = new System.Drawing.Point(46, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 0;
             this.label4.Text = "原密码";
             // 
-            // label7
+            // label27
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(90, 72);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 12);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "统计信息";
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label27.Location = new System.Drawing.Point(231, 69);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(234, 21);
+            this.label27.TabIndex = 3;
+            this.label27.Text = "请点击各选项卡查看所有功能。";
             // 
-            // label8
+            // label26
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(90, 98);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 12);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "系统当前共有：";
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label26.ForeColor = System.Drawing.Color.Purple;
+            this.label26.Location = new System.Drawing.Point(135, 31);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(432, 28);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "欢迎登陆选课系统，您现在的身份是管理员。";
             // 
-            // label9
+            // pictureBox1
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(138, 128);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 12);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "门课程";
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(215, 114);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(281, 254);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
-            // label10
+            // pictureBox2
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(138, 153);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 12);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "名学生";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(138, 200);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 12);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "篇公告";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(138, 178);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 12);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "名教师";
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(17, 68);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(292, 251);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // FmAdminMain
             // 
@@ -855,7 +842,7 @@
             this.MaximizeBox = false;
             this.Name = "FmAdminMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "欢迎使用选课系统";
+            this.Text = "欢迎使用选课系统 - 管理员后台";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FmAdminMain_FormClosed);
             this.Load += new System.EventHandler(this.FmAdminMain_Load);
             this.tabControl1.ResumeLayout(false);
@@ -872,6 +859,8 @@
             this.tabPage5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -939,11 +928,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn placeid;
         private System.Windows.Forms.DataGridViewTextBoxColumn precourse;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxstu;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
