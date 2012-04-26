@@ -53,6 +53,26 @@ namespace Service
                 return null;
             }
         }
+        public DataTable getAllTeacherOnlyTidTname()
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select `tid`,`tname` from `tb_teacher` order by tid desc", conn);
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+                conn.Close();
+                return dt;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return null;
+            }
+        }
         public int update(TeacherModel teaModel)
         {
             MySqlConnection conn = GetConn.getConn();

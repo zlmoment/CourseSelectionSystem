@@ -8,31 +8,29 @@ using System.Data;
 
 namespace Service
 {
-    public class PlaceService
+    public class CollegeService
     {
-        public PlaceService()
+        public CollegeService()
         {
 
         }
-
-        public PlaceModel getPlacebyPid(int pid)
+        public CollegeModel getCollegeNameByCid(int cid)
         {
             MySqlConnection conn = GetConn.getConn();
-            PlaceModel pModel = new PlaceModel();
+            CollegeModel collegeModel = new CollegeModel();
             try
             {
                 conn.Open();
-
-                MySqlCommand cmd = new MySqlCommand("select * from `tb_place` where `pid`=@pid", conn);
-                cmd.Parameters.AddWithValue("@pid", pid);
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_college` where cid=@cid", conn);
+                cmd.Parameters.AddWithValue("@cid", cid);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    pModel.Pid = int.Parse(reader["pid"].ToString());
-                    pModel.Pname = (string)reader["pname"];
+                    collegeModel.Cid = int.Parse(reader["cid"].ToString());
+                    collegeModel.Cname = reader["cname"].ToString();
                 }
                 conn.Close();
-                return pModel;
+                return collegeModel;
             }
             catch (Exception)
             {
@@ -40,16 +38,14 @@ namespace Service
                 return null;
             }
         }
-
-
-        public DataTable getAllPlace()
+        public DataTable getAllCollege()
         {
             MySqlConnection conn = GetConn.getConn();
             try
             {
                 conn.Open();
 
-                MySqlCommand cmd = new MySqlCommand("select * from `tb_place`", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_college`", conn);
                 DataTable dt = new DataTable();
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 da.Fill(dt);

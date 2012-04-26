@@ -55,6 +55,12 @@ namespace Business
             }
             return dt;
         }
+        public DataTable getAllTeacherWithoutTname()
+        {
+            TeacherService teaService = new TeacherService();
+            DataTable dt = teaService.getAllTeacherOnlyTidTname();
+            return dt;
+        }
         public int getTidByUid(int tid)
         {
             return new TeacherService().getTidByUid(tid);

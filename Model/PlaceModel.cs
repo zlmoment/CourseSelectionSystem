@@ -9,26 +9,17 @@ namespace Model
     {
         private int pid;
         private string pname;
-        private int parentpid;
 
-        public PlaceModel(int pid, string pname, int parentpid)
+        public PlaceModel(int pid, string pname)
         {
             this.pid = pid;
             this.pname = pname;
-            this.parentpid = parentpid;
         }
 
         public PlaceModel()
         {
 
         }
-
-        public int Parentpid
-        {
-            get { return parentpid; }
-            set { parentpid = value; }
-        }
-        
 
         public string Pname
         {

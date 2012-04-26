@@ -30,9 +30,9 @@ namespace CourseSelectionSystem
                 tname = this.tb_tname.Text;
                 phone = this.tb_phone.Text;
                 if (this.radioButton1.Checked)
-                    gender = 0;
-                else
                     gender = 1;
+                else
+                    gender = 0;
                 birthday = this.dateTimePicker1.Text;
                 
                 TeacherModel teacherModel = new TeacherModel(0, 0, tname, gender, birthday, phone);
@@ -40,7 +40,14 @@ namespace CourseSelectionSystem
                 int tid = 0 ;
                 TeacherBusiness teacherBusiness = new TeacherBusiness();
                 tid = teacherBusiness.addteacher(teacherModel);
-                MessageBox.Show(Convert.ToString("tid:"+tid));
+                if (tid != 0)
+                {
+                    MessageBox.Show("成功!");
+                }
+                else
+                {
+                    MessageBox.Show("失败，请重试!");
+                }
                 this.Dispose();
             }
             else

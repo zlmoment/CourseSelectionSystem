@@ -185,11 +185,6 @@
             // cb_tid
             // 
             this.cb_tid.FormattingEnabled = true;
-            this.cb_tid.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
             this.cb_tid.Location = new System.Drawing.Point(377, 62);
             this.cb_tid.Name = "cb_tid";
             this.cb_tid.Size = new System.Drawing.Size(139, 20);
@@ -208,11 +203,6 @@
             // cb_pid
             // 
             this.cb_pid.FormattingEnabled = true;
-            this.cb_pid.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
             this.cb_pid.Location = new System.Drawing.Point(377, 103);
             this.cb_pid.Name = "cb_pid";
             this.cb_pid.Size = new System.Drawing.Size(139, 20);

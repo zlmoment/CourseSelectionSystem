@@ -79,6 +79,28 @@ namespace Service
                 return null;
             }
         }
+        public DataTable getSelectedCourse(int sid,int semester)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_course` where `cid` in (select `cid` from `tb_sc` where `sid`=@sid and `semester`=@semester)", conn);
+                cmd.Parameters.AddWithValue("@sid", sid);
+                cmd.Parameters.AddWithValue("@semester", semester);
+                DataTable dt = new DataTable();
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                da.Fill(dt);
+                conn.Close();
+                return dt;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return null;
+            }
+        }
+
         public DataTable getCourseBySid(int sid, int semester)
         {
             //多表联查
@@ -191,7 +213,7 @@ namespace Service
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("select * from `tb_course`where cid = @cid", conn);
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_course` where cid = @cid", conn);
                 cmd.Parameters.AddWithValue("@cid", cid);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -215,14 +237,65 @@ namespace Service
                 return null;
             }
         }
-
+        public bool ifPrecourceYes(int sid, int cid, int semester)
+        {
+            int precourse = this.getCoursebyCid(cid).Precourse;
+            if (precourse == 0)
+                return true;
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select * from `tb_sc` where `sid`=@sid and `cid`=@precourse and `semester`=@semester", conn);
+                cmd.Parameters.AddWithValue("@sid", sid);
+                cmd.Parameters.AddWithValue("@cid", precourse);
+                cmd.Parameters.AddWithValue("@semester", semester);
+                int result = (int)cmd.ExecuteScalar();
+                cmd.Dispose();
+                if (result != 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return false;
+            }
+        }
+        //判断是否时间冲突
+        public bool isSectionNotAvailable(int sid, int cid, int semester)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd1 = new MySqlCommand("select count(*) from `tb_course` where `section` in (select `section` from `tb_course` where `cid` in (select `cid` from `tb_sc` where `sid`=@sid and `semester`=@semester)) and `cid`=@cid", conn);
+                cmd1.Parameters.AddWithValue("@sid", sid);
+                cmd1.Parameters.AddWithValue("@cid", cid);
+                cmd1.Parameters.AddWithValue("@semester", semester);
+                if (int.Parse(cmd1.ExecuteScalar().ToString()) > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return true;
+            }
+        }
         public int insertSelectedCourse(ScModel scModel)
         {
             MySqlConnection conn = GetConn.getConn();
             try
             {
                 conn.Open();
-                MySqlCommand cmd1 = new MySqlCommand("select * from `tb_sc` where sid=@sid and cid=@cid", conn);
+                MySqlCommand cmd1 = new MySqlCommand("select * from `tb_sc` where `sid`=@sid and `cid`=@cid", conn);
                 cmd1.Parameters.AddWithValue("@sid", scModel.Sid);
                 cmd1.Parameters.AddWithValue("@cid", scModel.Cid);
                 //cmd1.Parameters.AddWithValue("@semester", scModel.Semester);
@@ -251,17 +324,36 @@ namespace Service
                 return -1;
             }
         }
-
-        public bool deleteSelectedCourse(int sid, int cid)
+        public int getTakeStuNumByCid(int cid, int semester)
         {
             MySqlConnection conn = GetConn.getConn();
             try
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("delete from `tb_sc` where `sid`=@sid and cid =@cid", conn);
+                MySqlCommand cmd = new MySqlCommand("select count(*) from `tb_sc` where `cid`=@cid and `semester`=@semester", conn);
+                cmd.Parameters.AddWithValue("@cid", cid);
+                cmd.Parameters.AddWithValue("@semester", semester);
+                int result = int.Parse(cmd.ExecuteScalar().ToString());
+                cmd.Dispose();
+                return result;
+            }
+            catch (Exception)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
+        public bool deleteSelectedCourse(int sid, int cid, int semester)
+        {
+            MySqlConnection conn = GetConn.getConn();
+            try
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("delete from `tb_sc` where `sid`=@sid and `cid`=@cid and `semester`=@semester", conn);
                 cmd.Parameters.AddWithValue("@sid", sid);
-                cmd.Parameters.AddWithValue("@cid", cid);                
-                int result = cmd.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@cid", cid);
+                cmd.Parameters.AddWithValue("@semester", semester);
+                cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 return true;
             }

@@ -22,7 +22,11 @@ namespace Business
 
         public List<CourseInfo> getTimetable(int sid)
         {
-            int semester = 1;
+            int startyear = int.Parse(new StudentBusiness().getStuBySid(sid).Startyear.ToString());
+            int year = DateTime.Now.Year;
+            int month = DateTime.Now.Month;
+            int semester = (month >= 1 && month <= 6) ? 2 * (year - startyear) : 2 * (year - startyear) + 1;
+            
             courseModelList = new CourseService().getAllCourseBySid(sid, semester);
             if (courseModelList != null)
             {

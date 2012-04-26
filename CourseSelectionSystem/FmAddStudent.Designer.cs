@@ -205,6 +205,7 @@
             this.MaximizeBox = false;
             this.Name = "FmAddStudent";
             this.Text = "新增学生";
+            this.Load += new System.EventHandler(this.FmAddStudent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,6 +18,7 @@ namespace Business
         {
             StudentService stuService = new StudentService();
             DataTable dt = stuService.getAllStudent();
+            //添加性别列
             dt.Columns.Add("trans_gender",typeof(string));
             foreach (DataRow dr in dt.Rows)
             {
@@ -30,6 +31,13 @@ namespace Business
                     dr["trans_gender"] = "男";
                 }
                 
+            }
+            //添加学院列
+            dt.Columns.Add("trans_college", typeof(string));
+            CollegeService collegeService = new CollegeService();
+            foreach (DataRow dr in dt.Rows)
+            {
+                dr["trans_college"] = collegeService.getCollegeNameByCid(int.Parse(dr["collegeid"].ToString())).Cname;
             }
             return dt;
         }

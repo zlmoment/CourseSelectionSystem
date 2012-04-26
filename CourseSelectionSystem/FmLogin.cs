@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using SkinSharp;
+//using SkinSharp;
 using Business;
 using Model;
 
@@ -14,11 +14,12 @@ namespace CourseSelectionSystem
 {
     public partial class FmLogin : Form
     {
-        public SkinH_Net skinh;
+        //public SkinH_Net skinh;
         public FmLogin()
         {
-            skinh = new SkinH_Net();
-            skinh.Attach();
+            //加载皮肤dll
+            //skinh = new SkinH_Net();
+            //skinh.Attach();
             InitializeComponent();
         }
 

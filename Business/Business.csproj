@@ -41,11 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNewsBusiness.cs" />
+    <Compile Include="CollegeBusiness.cs" />
     <Compile Include="CourseBusiness.cs" />
     <Compile Include="DeleteNewsBusiness.cs" />
     <Compile Include="GetAllNewsListBusiness.cs" />
     <Compile Include="CourseInfo.cs" />
     <Compile Include="GetTimetableBusiness.cs" />
+    <Compile Include="PlaceBusiness.cs" />
     <Compile Include="StudentBusiness.cs" />
     <Compile Include="TeacherBusiness.cs" />
     <Compile Include="UpdateNewsBusiness.cs" />

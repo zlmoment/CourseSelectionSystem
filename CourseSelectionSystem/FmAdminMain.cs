@@ -16,6 +16,8 @@ namespace CourseSelectionSystem
         FmLogin fmLogin;
         UserModel userModel;
         NewsModel[] newsModelList = null;
+        
+
         public FmAdminMain(FmLogin fmLogin, UserModel userModel)
         {
             this.fmLogin = fmLogin;
@@ -30,7 +32,7 @@ namespace CourseSelectionSystem
         }
         private void FmAdminMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            fmLogin.Dispose();
+            fmLogin.Show();
         }
         //添加学生
         private void button1_Click(object sender, EventArgs e)
@@ -123,10 +125,14 @@ namespace CourseSelectionSystem
         private void button6_Click(object sender, EventArgs e)
         {
             StudentBusiness stuBusiness = new StudentBusiness();
-            
             DataTable dt = stuBusiness.getAllStudent();
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.DataSource = dt;
+            DataGridViewComboBoxColumn cob = new DataGridViewComboBoxColumn();
+            cob = (DataGridViewComboBoxColumn)this.dataGridView1.Columns["collegeid"];
+            cob.DataSource = new CollegeBusiness().getAllCollege();
+            cob.DisplayMember = "cname";
+            cob.ValueMember = "cid";
         }
         //修改密码
         private void button9_Click(object sender, EventArgs e)
@@ -169,7 +175,7 @@ namespace CourseSelectionSystem
             
             TeacherBusiness teaBusiness = new TeacherBusiness();
             DataTable dt = teaBusiness.getAllTeacher();
-            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.DataSource = dt;
         }
         //新增教师
@@ -199,7 +205,14 @@ namespace CourseSelectionSystem
             stuModelToBeUpdated.Sname = this.dataGridView1.CurrentRow.Cells["sname"].Value.ToString();
             stuModelToBeUpdated.Startyear = this.dataGridView1.CurrentRow.Cells["startyear"].Value.ToString();
             stuModelToBeUpdated.Gender = this.dataGridView1.CurrentRow.Cells["gender"].Value.ToString() == "男" ? 1 : 0;
-            stuModelToBeUpdated.Collegeid = int.Parse(this.dataGridView1.CurrentRow.Cells["collegeid"].Value.ToString());
+            if (this.dataGridView1.CurrentCell.ColumnIndex == this.dataGridView1.Columns["collegeid"].Index)
+            {
+                stuModelToBeUpdated.Collegeid = int.Parse(this.dataGridView1.CurrentRow.Cells["collegeid"].Value.ToString());
+            }
+            else
+            {
+                stuModelToBeUpdated.Collegeid = int.Parse(this.dataGridView1.CurrentRow.Cells["college_id"].Value.ToString());
+            }
             //stuModelToBeUpdated = stuBusiness.getStuBySid(sid);
             int result = stuBusiness.updatestudent(stuModelToBeUpdated);
             if (result != 0)
@@ -212,7 +225,7 @@ namespace CourseSelectionSystem
             }
             
         }
-        //学生datagridview数据绑定完毕后 转换数据
+        //学生datagridview数据绑定完毕后
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             
@@ -300,6 +313,16 @@ namespace CourseSelectionSystem
             DataTable dt = couBusiness.getAllCourse();
             this.dataGridView3.AutoGenerateColumns = false;
             this.dataGridView3.DataSource = dt;
+            DataGridViewComboBoxColumn cob1 = new DataGridViewComboBoxColumn();
+            cob1 = (DataGridViewComboBoxColumn)this.dataGridView3.Columns["pid"];
+            cob1.DataSource = new PlaceBusiness().getAllPlace();
+            cob1.DisplayMember = "pname";
+            cob1.ValueMember = "pid";
+            DataGridViewComboBoxColumn cob2 = new DataGridViewComboBoxColumn();
+            cob2 = (DataGridViewComboBoxColumn)this.dataGridView3.Columns["ctid"];
+            cob2.DataSource = new TeacherBusiness().getAllTeacher();
+            cob2.DisplayMember = "tname";
+            cob2.ValueMember = "tid";
         }
         //新增课程
         private void button14_Click(object sender, EventArgs e)
@@ -349,9 +372,68 @@ namespace CourseSelectionSystem
             couModelToBeUpdated.Cid = int.Parse(this.dataGridView3.CurrentRow.Cells["cid"].Value.ToString());
             couModelToBeUpdated.Cname = this.dataGridView3.CurrentRow.Cells["cname"].Value.ToString();
             couModelToBeUpdated.Credit = int.Parse(this.dataGridView3.CurrentRow.Cells["credit"].Value.ToString());
-            couModelToBeUpdated.Pid = int.Parse(this.dataGridView3.CurrentRow.Cells["pid"].Value.ToString());
-            couModelToBeUpdated.Tid = int.Parse(this.dataGridView3.CurrentRow.Cells["ctid"].Value.ToString());
-            couModelToBeUpdated.Section = int.Parse(this.dataGridView3.CurrentRow.Cells["section"].Value.ToString());
+            if (this.dataGridView3.CurrentCell.ColumnIndex == this.dataGridView3.Columns["pid"].Index)
+            {
+                couModelToBeUpdated.Pid = int.Parse(this.dataGridView3.CurrentRow.Cells["pid"].Value.ToString());
+            }
+            else
+            {
+                couModelToBeUpdated.Pid = int.Parse(this.dataGridView3.CurrentRow.Cells["placeid"].Value.ToString());
+            }
+            if (this.dataGridView3.CurrentCell.ColumnIndex == this.dataGridView3.Columns["ctid"].Index)
+            {
+                couModelToBeUpdated.Tid = int.Parse(this.dataGridView3.CurrentRow.Cells["ctid"].Value.ToString());
+            }
+            else
+            {
+                couModelToBeUpdated.Tid = int.Parse(this.dataGridView3.CurrentRow.Cells["teacherid"].Value.ToString());
+            }
+            switch (this.dataGridView3.CurrentRow.Cells["section"].Value.ToString())
+            {
+                case "周一（1）": couModelToBeUpdated.Section = 1; break;
+                case "周一（2）": couModelToBeUpdated.Section = 2; break;
+                case "周一（3）": couModelToBeUpdated.Section = 3; break;
+                case "周一（4）": couModelToBeUpdated.Section = 4; break;
+                case "周一（5）": couModelToBeUpdated.Section = 5; break;
+                case "周一（6）": couModelToBeUpdated.Section = 6; break;
+                case "周二（1）": couModelToBeUpdated.Section = 7; break;
+                case "周二（2）": couModelToBeUpdated.Section = 8; break;
+                case "周二（3）": couModelToBeUpdated.Section = 9; break;
+                case "周二（4）": couModelToBeUpdated.Section = 10; break;
+                case "周二（5）": couModelToBeUpdated.Section = 11; break;
+                case "周二（6）": couModelToBeUpdated.Section = 12; break;
+                case "周三（1）": couModelToBeUpdated.Section = 13; break;
+                case "周三（2）": couModelToBeUpdated.Section = 14; break;
+                case "周三（3）": couModelToBeUpdated.Section = 15; break;
+                case "周三（4）": couModelToBeUpdated.Section = 16; break;
+                case "周三（5）": couModelToBeUpdated.Section = 17; break;
+                case "周三（6）": couModelToBeUpdated.Section = 18; break;
+                case "周四（1）": couModelToBeUpdated.Section = 19; break;
+                case "周四（2）": couModelToBeUpdated.Section = 20; break;
+                case "周四（3）": couModelToBeUpdated.Section = 21; break;
+                case "周四（4）": couModelToBeUpdated.Section = 22; break;
+                case "周四（5）": couModelToBeUpdated.Section = 23; break;
+                case "周四（6）": couModelToBeUpdated.Section = 24; break;
+                case "周五（1）": couModelToBeUpdated.Section = 25; break;
+                case "周五（2）": couModelToBeUpdated.Section = 26; break;
+                case "周五（3）": couModelToBeUpdated.Section = 27; break;
+                case "周五（4）": couModelToBeUpdated.Section = 28; break;
+                case "周五（5）": couModelToBeUpdated.Section = 29; break;
+                case "周五（6）": couModelToBeUpdated.Section = 30; break;
+                case "周六（1）": couModelToBeUpdated.Section = 31; break;
+                case "周六（2）": couModelToBeUpdated.Section = 32; break;
+                case "周六（3）": couModelToBeUpdated.Section = 33; break;
+                case "周六（4）": couModelToBeUpdated.Section = 34; break;
+                case "周六（5）": couModelToBeUpdated.Section = 35; break;
+                case "周六（6）": couModelToBeUpdated.Section = 36; break;
+                case "周日（1）": couModelToBeUpdated.Section = 37; break;
+                case "周日（2）": couModelToBeUpdated.Section = 38; break;
+                case "周日（3）": couModelToBeUpdated.Section = 39; break;
+                case "周日（4）": couModelToBeUpdated.Section = 40; break;
+                case "周日（5）": couModelToBeUpdated.Section = 41; break;
+                case "周日（6）": couModelToBeUpdated.Section = 42; break;
+            }
+            //couModelToBeUpdated.Section = int.Parse(this.dataGridView3.CurrentRow.Cells["section"].Value.ToString());
             if (this.dataGridView3.CurrentRow.Cells["week"].Value.ToString() == "1-16")
             {
                 couModelToBeUpdated.Week = 1;
@@ -378,7 +460,38 @@ namespace CourseSelectionSystem
             }
         }
         
-        
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
+        }
+        //选项卡切换时触发刷新操作
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (this.tabControl1.SelectedIndex)
+            {
+                case 0: break;
+                //刷新课程列表
+                case 1: this.button17_Click(null, null); break;
+                //刷新教师列表
+                case 2: this.button13_Click(null, null); break;
+                //刷新公告列表
+                case 3: this.button5_Click(null, null); break;
+                //刷新学生列表
+                case 4: this.button6_Click(null, null); break;
+                case 5: break;
+            }
+        }
+
 
     }
 }

@@ -26,6 +26,12 @@ namespace CourseSelectionSystem
         public FmAddCourse()
         {
             InitializeComponent();
+            this.cb_pid.DataSource = new PlaceBusiness().getAllPlace();
+            this.cb_pid.DisplayMember = "pname";
+            this.cb_pid.ValueMember = "pid";
+            this.cb_tid.DataSource = new TeacherBusiness().getAllTeacherWithoutTname();
+            this.cb_tid.DisplayMember = "tname";
+            this.cb_tid.ValueMember = "tid";
         }
         public FmAddCourse(int tid)
         {
@@ -48,8 +54,8 @@ namespace CourseSelectionSystem
                 credit = int.Parse(this.tb_credit.Text);
                 week = this.cb_section.SelectedIndex + 1;//1:1-16 2:1-8 3:9-16
                 section = this.cb_section.SelectedIndex+1;
-                tid = int.Parse(this.cb_tid.Text);
-                pid = int.Parse(this.cb_pid.Text);
+                tid = int.Parse(this.cb_tid.SelectedValue.ToString());
+                pid = int.Parse(this.cb_pid.SelectedValue.ToString());
                 maxstu = int.Parse(this.tb_maxstu.Text);
                 if (this.tb_precourse.Text != "")
                 {
@@ -64,7 +70,14 @@ namespace CourseSelectionSystem
                 CourseBusiness couBusiness = new CourseBusiness();
                 CourseModel courseModel = new CourseModel(cid,cname,credit,week,section,tid,pid,precourse,maxstu);
                 cid = couBusiness.addCourse(courseModel);
-                MessageBox.Show(Convert.ToString(cid));
+                if (cid != 0)
+                {
+                    MessageBox.Show("成功!");
+                }
+                else
+                {
+                    MessageBox.Show("失败，请重试!");
+                }
                 this.Dispose();
             }
             else
